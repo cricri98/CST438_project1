@@ -1,5 +1,6 @@
 package com.example.cst438_project1;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.room.Room;
@@ -11,13 +12,16 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
-public class UserDAOTest {
+/*Checks that DAO operations for User work.
+ *@author Joshua Click
+ */
+public class UserDAOTest{
     /*Checks that User can be created and saved to Room
-     **No params
      */
     @Test
     public void UserCreate(){
-        StudentAppDatabase db = Room.databaseBuilder(this, StudentAppDatabase.class, StudentAppDatabase.UserName).build();
+        Context context = ApplicationProvider.getApplicationContext();
+        StudentAppDatabase db = Room.databaseBuilder(context, StudentAppDatabase.class, StudentAppDatabase.UserName).build();
         User test = new User();
         db.getUserDao().insertUser(test);
         assertNotNull( db.getUserDao().getUser(test.getID()));
@@ -25,7 +29,6 @@ public class UserDAOTest {
         db = null;
     }
     /*Checks that User can be deleted from Room
-    **No params
      */
     @Test
     public void UserDelete(){
@@ -37,7 +40,6 @@ public class UserDAOTest {
         assertNull(db.UserDAO.getUser(test.getID()));
     }
     /*Checks that User can be updated in Room
-     **No params
      */
     @Test
     public void UserUpdate(){
