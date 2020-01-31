@@ -27,18 +27,6 @@ public class User {
         this.name = "Dan Default";
         this.password = "password1";
     }
-
-    User(int ID){
-        this.ID = ID;
-        this.name = "ID Default";
-        this.password = "password2";
-    }
-
-    User(int ID, String name){
-        this.ID = ID;
-        this.name = name;
-        this.password = "password3";
-    }
     User(int ID, String name, String password){
         this.ID = ID;
         this.name = name;
@@ -48,6 +36,13 @@ public class User {
     public int getID(){
        return ID;
     }
+    /*Sets User ID.
+     *NOTE:DON'T USE THIS METHOD.
+     *@param ID the new ID
+     */
+    public void setID(int ID){
+        this.ID = ID;
+    }
 
     public String getName(){
         return name;
@@ -56,18 +51,29 @@ public class User {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /*Returns true if the String matches the password
      *@param in The String to be checked.
      *@return boolean Does in match the password?
      */
+    /*
     public boolean isPassword(String in){
         return in.equals(password);
     }
+     */
     /*Sets the password to new password and returns true if password_old matches the password, otherwise returns false
      *@param password_old The old password
      *@param password_new The new password
      *@return boolean Has the password been changed?
      */
+    /*
     public boolean setPassword(String password_old, String password_new){
         if (password_old.equals(password)){
             password = password_new;
@@ -75,4 +81,5 @@ public class User {
         }
         return false;
     }
+    */
 }
