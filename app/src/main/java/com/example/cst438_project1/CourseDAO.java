@@ -1,10 +1,12 @@
-package com.example.cst438_project1.CourseDAO;
+package com.example.cst438_project1;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.cst438_project1.Course;
 
 import java.util.List;
 
@@ -19,13 +21,10 @@ public interface CourseDAO {
     @Delete
     void delete(Course Course);
 
-    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE)
+    @Query("SELECT * FROM course")
     List<Course> getCourses();
 
-    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE mCourseId = :courseId")
-    Course getCourseById(int courseId);
-
-    @Query("SELECT * FROM " + AppDatabase.COURSE_TABLE + " WHERE mCourseId = :courseId")
+    @Query("SELECT * FROM course WHERE mCourseId = :courseId")
     Course getCourseById(int courseId);
 }
 

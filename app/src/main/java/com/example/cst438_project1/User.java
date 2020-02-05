@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey;
  */
 @Entity
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int ID;
 
     @ColumnInfo(name = "name")
