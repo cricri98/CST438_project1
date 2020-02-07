@@ -13,21 +13,21 @@ import java.util.List;
 @Dao
 public interface CourseDAO {
     @Insert
-    void insert(Course... courses);
+    void insert(Enrollment... enrollments);
 
     @Update
-    void update(Course... courses);
+    void update(Enrollment... enrollments);
 
     @Delete
-    void delete(Course course);
+    void delete(Enrollment enrollment);
 
-    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE)
-    List<Course> getCourses();
+    @Query("SELECT * FROM " + StudentAppDatabase.ENROLLMENT_TABLE)
+    List<Course> getEnrollments();
 
-    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE + " WHERE mCourseId = :courseId")
-    Course getCourseById(int courseId);
+    @Query("SELECT * FROM " + StudentAppDatabase.ENROLLMENT_TABLE + " WHERE mEnrollmentId = :enrollmentId")
+    Course getEnrollmentById(int enrollmentId);
 
-    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE + " WHERE mCourseName = :courseName")
-    Course getCourseByName(String courseName);
+    @Query("SELECT * FROM " + StudentAppDatabase.ENROLLMENT_TABLE + " WHERE mStudentId = :studentId and WHERE mCourseId = :courseId")
+    Course getEnrollmentByIds(int studentId, int courseId);
 }
 
