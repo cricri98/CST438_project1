@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.cst438_project1.Assignment;
 import com.example.cst438_project1.GradeCategory;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface GradeCategoryDAO {
 
     @Query("SELECT * FROM " + AppDatabase.GRADECATEGORY_TABLE )
     List<GradeCategory> getGradeCategories();
+
+    @Query("SELECT * FROM " + AppDatabase.GRADECATEGORY_TABLE + " WHERE mTitle = :mTitleId")
+    List<GradeCategory> getGradeCategorytById(String mTitleId);
 }

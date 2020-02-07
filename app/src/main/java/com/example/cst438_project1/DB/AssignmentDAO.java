@@ -24,4 +24,7 @@ public interface AssignmentDAO {
 
     @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE )
     List<Assignment> getAssignments();
+
+    @Query("SELECT * FROM " + AppDatabase.ASSIGNMENT_TABLE + " WHERE mAssignmentID = :assignmentId")
+    List<Assignment> getAssignmentById(Integer assignmentId);
 }
