@@ -21,10 +21,13 @@ public interface CourseDAO {
     @Delete
     void delete(Course course);
 
-    @Query("SELECT * FROM course")
+    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE)
     List<Course> getCourses();
 
-    @Query("SELECT * FROM course WHERE mCourseId = :courseId")
+    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE + " WHERE mCourseId = :courseId")
     Course getCourseById(int courseId);
+
+    @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE + " WHERE mCourseName = :courseName")
+    Course getCourseByName(String courseName);
 }
 
