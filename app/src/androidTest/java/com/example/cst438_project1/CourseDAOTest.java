@@ -26,7 +26,8 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        int Iid = r.nextInt();
+        Course test = new Course("Test", Iid, "1/1/2020", "2/2/2020", "blah blah");
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseById(test.getCourseId()));
     }
