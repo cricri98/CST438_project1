@@ -2,6 +2,7 @@ package com.example.cst438_project1;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /*Contains personal data for user.
@@ -22,6 +23,7 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
+    @Ignore
     User(){
         this.ID = 0;
         this.name = "Dan Default";

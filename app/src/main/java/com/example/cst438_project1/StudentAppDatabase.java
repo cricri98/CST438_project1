@@ -3,8 +3,10 @@ package com.example.cst438_project1;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 @Database(version = 1, entities = {User.class, Course.class, Enrollment.class})
+@TypeConverters(DateTypeConverter.class)
 public abstract class StudentAppDatabase extends RoomDatabase {
     public static final String UserName ="db-user";
     public static final String USER_TABLE ="user";
@@ -17,5 +19,6 @@ public abstract class StudentAppDatabase extends RoomDatabase {
 
     abstract public UserDAO getUserDao();
     abstract public CourseDAO getCourseDAO();
+    abstract public EnrollmentDAO getEnrollmentDAO();
 }
 

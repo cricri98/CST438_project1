@@ -7,6 +7,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -20,14 +21,27 @@ public class EnrollmentDaoTest {
     /*Checks that Course can be created and saved to Room
      */
     @Test
-    public void CourseCreate(){
+    public void EnrollmentCreate(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
-        db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
+
+        Date d = new Date(2020, 10, 10);
+
+        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        db.getCourseDAO().insert(testCourse);
+        testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
+
+        User testUser = new User();
+        db.getUserDao().insertUser(testUser);
+        testUser = db.getUserDao().getUser(testUser.getID())[0];
+
+        Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
+
+        db.getEnrollmentDAO().insert(e);
+
+        assertNotNull(db.getEnrollmentDAO().getEnrollmentByIds(testUser.getID(), testCourse.getCourseId()));
     }
     /*Checks that Course can be deleted from Room
      */
