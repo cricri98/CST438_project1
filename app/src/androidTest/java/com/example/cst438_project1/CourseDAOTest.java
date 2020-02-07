@@ -28,7 +28,7 @@ public class CourseDAOTest {
         Random r = new Random();
         Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
         db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseById(test.getCourseId()));
+        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
     }
     /*Checks that Course can be deleted from Room
      */
@@ -40,10 +40,12 @@ public class CourseDAOTest {
         Random r = new Random();
         Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
         db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseById(test.getCourseId()));
+        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
-        db.getCourseDAO().delete(test);
-        assertNull(db.getCourseDAO().getCourseById(test.getCourseId()));
+        Course temp = db.getCourseDAO().getCourseByName(test.getCourseName());
+
+        db.getCourseDAO().delete(temp);
+        assertNull(db.getCourseDAO().getCourseByName(temp.getCourseName()));
     }
     /*Checks that Course can be updated in Room
      */
@@ -55,19 +57,19 @@ public class CourseDAOTest {
         Random r = new Random();
         Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
         db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseById(test.getCourseId()));
+        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
-        db.getCourseDAO().delete(test);
-        assertNull(db.getCourseDAO().getCourseById(test.getCourseId()));
+        Course temp = db.getCourseDAO().getCourseByName(test.getCourseName());
 
-        //Generate a random string/"name"
-        byte[] b = new byte[10];
-        r.nextBytes(b);
-        String name = new String(b, Charset.forName("UTF-8"));
-        assertEquals(10, name.length());
+//        //Generate a random string/"name"
+//        byte[] b = new byte[10];
+//        new Random().nextBytes(b);
+//        String name = new String(b, Charset.forName("UTF-8"));
 
-        test.setCourseName(name);
-        db.getCourseDAO().update(test);
-        assertEquals(name, db.getUserDao().getUser(test.getCourseId())[0].getName());
+        String name = "new name";
+
+        temp.setCourseName(name);
+        db.getCourseDAO().update(temp);
+        assertEquals(name, db.getCourseDAO().getCourseByName(name).getCourseName());
     }
 }

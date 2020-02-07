@@ -4,12 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = StudentAppDatabase.COURSE_TABLE)
 public class Course{
+
     @PrimaryKey(autoGenerate = true)
     private int mCourseId;
 
-    @ColumnInfo(name = "course-name")
     private String mCourseName;
 
     private int mInstructorId;

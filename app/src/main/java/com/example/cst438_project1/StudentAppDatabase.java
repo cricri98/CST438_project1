@@ -9,7 +9,7 @@ public abstract class StudentAppDatabase extends RoomDatabase {
     public static final String UserName ="db-user";
     public static final String USER_TABLE ="user";
 
-    public static final String Coursename ="db-name";
+    public static final String CourseName ="db-course";
     public static final String COURSE_TABLE ="course";
 
     abstract public UserDAO getUserDao();
