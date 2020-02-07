@@ -11,7 +11,9 @@ import androidx.room.Update;
 public interface UserDAO {
 
     @Query("Select * from User WHERE ID = :id")
-    User[] getUser(int id);
+    User[] getUserbyID(int id);
+    @Query("Select * from User Where name = :name")
+    User[] getUserbyName(String name);
 
     @Update
     void updateUser(User... users);
