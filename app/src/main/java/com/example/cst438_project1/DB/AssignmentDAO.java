@@ -7,7 +7,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.cst438_project1.Assignment;
-import com.example.cst438_project1.GradeCategory;
 
 import java.util.List;
 

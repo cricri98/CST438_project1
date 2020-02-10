@@ -4,7 +4,7 @@
 //        o GradeID
 //        o AssignedDate
 //        o categoryID
-//TODO create the type converter for assignedDate
+
 package com.example.cst438_project1;
 
 import androidx.annotation.NonNull;
