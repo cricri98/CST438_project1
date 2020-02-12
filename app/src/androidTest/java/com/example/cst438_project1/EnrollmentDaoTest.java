@@ -77,7 +77,7 @@ public class EnrollmentDaoTest {
      */
     @Test
     public void EnrollmentUpdate(){
-        ontext c = InstrumentationRegistry.getInstrumentation().getContext();
+        Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
@@ -98,8 +98,12 @@ public class EnrollmentDaoTest {
 
         e = db.getEnrollmentDAO().getEnrollmentByDate(d).get(0);
 
-        String name = "new name";
+        d = new Date(2021, 10, 10);
 
-        e.s
+        e.setDate(d);
+
+        db.getEnrollmentDAO().update(e);
+
+        assertEquals(db.getEnrollmentDAO().getEnrollmentById(e.getEnrollmentId()).getDate().compareTo(d), 0);
     }
 }
