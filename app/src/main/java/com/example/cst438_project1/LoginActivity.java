@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                 for (User u:user){
                     if (u.isPassword(pass)){
                         currentUser.set(u);
-                        break;
+                        finish();
                     }
                 }
             }

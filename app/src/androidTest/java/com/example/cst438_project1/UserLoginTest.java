@@ -10,7 +10,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class UserLoginClass {
+public class UserLoginTest {
     @Test
     public void current_user(){
         currentUser.reset();
