@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c5b9896b5a2fe32eca1625a2567fb945",
+    "identityHash": "7308f3cb9aafda0e0c49882b207b7598",
     "entities": [
       {
         "tableName": "User",
@@ -37,8 +37,8 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Course",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mCourseId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `course-name` TEXT, `mInstructorId` INTEGER NOT NULL, `mStartDate` TEXT, `mEndDate` TEXT, `mDescription` TEXT)",
+        "tableName": "course",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mCourseId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mCourseName` TEXT, `mInstructorId` INTEGER NOT NULL, `mStartDate` TEXT, `mEndDate` TEXT, `mDescription` TEXT)",
         "fields": [
           {
             "fieldPath": "mCourseId",
@@ -48,7 +48,7 @@
           },
           {
             "fieldPath": "mCourseName",
-            "columnName": "course-name",
+            "columnName": "mCourseName",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -90,7 +90,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c5b9896b5a2fe32eca1625a2567fb945')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7308f3cb9aafda0e0c49882b207b7598')"
     ]
   }
 }
