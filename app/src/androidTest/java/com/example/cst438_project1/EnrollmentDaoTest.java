@@ -33,9 +33,9 @@ public class EnrollmentDaoTest {
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
-        User testUser = new User();
+        User testUser = new User("Jim bo", "notAPassword");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getID())[0];
+        testUser = db.getUserDao().getUserByName(testUser.getName());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 
@@ -46,43 +46,60 @@ public class EnrollmentDaoTest {
     /*Checks that Course can be deleted from Room
      */
     @Test
-    public void CourseDelete(){
+    public void EnrollmentDelete(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
-        db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
-        Course temp = db.getCourseDAO().getCourseByName(test.getCourseName());
+        Date d = new Date(2020, 10, 10);
 
-        db.getCourseDAO().delete(temp);
-        assertNull(db.getCourseDAO().getCourseByName(temp.getCourseName()));
+        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        db.getCourseDAO().insert(testCourse);
+        testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
+
+        User testUser = new User("Jim bo", "notAPassword");
+        db.getUserDao().insertUser(testUser);
+        testUser = db.getUserDao().getUserByName(testUser.getName());
+
+        Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
+
+        db.getEnrollmentDAO().insert(e);
+
+        e = db.getEnrollmentDAO().getEnrollmentByDate(d).get(0);
+
+        db.getEnrollmentDAO().delete(e);
+
+        assertNull(db.getEnrollmentDAO().getEnrollmentById(e.getEnrollmentId()));
+
     }
     /*Checks that Course can be updated in Room
      */
     @Test
-    public void CourseUpdate(){
-        Context c = InstrumentationRegistry.getInstrumentation().getContext();
+    public void EnrollmentUpdate(){
+        ontext c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
-        db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
-        Course temp = db.getCourseDAO().getCourseByName(test.getCourseName());
+        Date d = new Date(2020, 10, 10);
 
-//        //Generate a random string/"name"
-//        byte[] b = new byte[10];
-//        new Random().nextBytes(b);
-//        String name = new String(b, Charset.forName("UTF-8"));
+        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        db.getCourseDAO().insert(testCourse);
+        testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
+
+        User testUser = new User("Jim bo", "notAPassword");
+        db.getUserDao().insertUser(testUser);
+        testUser = db.getUserDao().getUserByName(testUser.getName());
+
+        Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
+
+        db.getEnrollmentDAO().insert(e);
+
+        e = db.getEnrollmentDAO().getEnrollmentByDate(d).get(0);
 
         String name = "new name";
 
-        temp.setCourseName(name);
-        db.getCourseDAO().update(temp);
-        assertEquals(name, db.getCourseDAO().getCourseByName(name).getCourseName());
+        e.s
     }
 }

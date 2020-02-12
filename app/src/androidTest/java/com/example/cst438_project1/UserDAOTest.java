@@ -25,7 +25,7 @@ public class UserDAOTest{
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
-        User test = new User();
+        User test = new User("j", "p");
         db.getUserDao().insertUser(test);
         assertNotNull( db.getUserDao().getUser(test.getID()));
     }

@@ -29,8 +29,7 @@ public class User {
         this.name = "Dan Default";
         this.password = "password1";
     }
-    User(int ID, String name, String password){
-        this.ID = ID;
+    User(String name, String password){
         this.name = name;
         this.password = password;
     }

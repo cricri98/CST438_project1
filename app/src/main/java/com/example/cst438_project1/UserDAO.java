@@ -13,6 +13,9 @@ public interface UserDAO {
     @Query("Select * from User WHERE ID = :id")
     User[] getUser(int id);
 
+    @Query("Select * from " + StudentAppDatabase.USER_TABLE + " WHERE name = :name")
+    User getUserByName(String name);
+
     @Update
     void updateUser(User... users);
     @Insert
