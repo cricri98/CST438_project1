@@ -1,4 +1,4 @@
-package com.example.cst438_project1.CourseDAO;
+package com.example.cst438_project1;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
