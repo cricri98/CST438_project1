@@ -6,7 +6,9 @@ import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.cst438_project1.DB.AppDatabase;
+import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.Objects.Assignment;
+import com.example.cst438_project1.Objects.GradeCategory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +37,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void AssignmentCreate(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
-        AppDatabase db = Room.inMemoryDatabaseBuilder(c, AppDatabase.class).build();
+        StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
@@ -50,7 +52,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void AssignmentDelete(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
-        AppDatabase db = Room.inMemoryDatabaseBuilder(c, AppDatabase.class).build();
+        StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
@@ -68,7 +70,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void GradeCategoryCreate(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
-        AppDatabase db = Room.inMemoryDatabaseBuilder(c, AppDatabase.class).build();
+        StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
         GradeCategory test = new GradeCategory("ie", r.nextInt(), r.nextInt(), r.nextInt());
@@ -82,7 +84,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void GradeCategoryDelete(){
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
-        AppDatabase db = Room.inMemoryDatabaseBuilder(c, AppDatabase.class).build();
+        StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
         GradeCategory test = new GradeCategory("ie", r.nextInt(), r.nextInt(), r.nextInt());

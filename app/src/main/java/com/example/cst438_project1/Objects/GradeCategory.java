@@ -5,15 +5,15 @@
 //        o AssignedDate
 //        o categoryID
 
-package com.example.cst438_project1;
+package com.example.cst438_project1.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.cst438_project1.DB.AppDatabase;
+import com.example.cst438_project1.DB.StudentAppDatabase;
 
-@Entity(tableName = AppDatabase.GRADECATEGORY_TABLE)
+@Entity(tableName = StudentAppDatabase.GRADECATEGORY_TABLE)
 public class GradeCategory {
 
     @PrimaryKey

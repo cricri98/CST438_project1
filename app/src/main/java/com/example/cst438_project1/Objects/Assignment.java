@@ -8,14 +8,14 @@
     //o CourseID
     //o AssignmentID
 
-package com.example.cst438_project1;
+package com.example.cst438_project1.Objects;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.cst438_project1.DB.AppDatabase;
+import com.example.cst438_project1.DB.StudentAppDatabase;
 
-@Entity(tableName = AppDatabase.ASSIGNMENT_TABLE)
+@Entity(tableName = StudentAppDatabase.ASSIGNMENT_TABLE)
 public class Assignment {
 
     //unique ID?
