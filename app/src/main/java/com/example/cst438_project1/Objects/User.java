@@ -2,6 +2,7 @@ package com.example.cst438_project1.Objects;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
@@ -24,11 +25,12 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
+    @Ignore
     User(){
         this.name = "Dan Default";
         this.password = "password1";
     }
-    User(String name, String password){
+    public User(String name, String password){
         this.name = name;
         this.password = password;
     }

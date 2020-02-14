@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 openLogin();
             }
         });
+
+        startActivity(new Intent(this, mainMenu.class));
     }
 
     void openCreateAcc(){

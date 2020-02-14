@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a90c12802d66e14e0c521bdc81a941d6",
+    "identityHash": "fc2b9963d9222846cb30362bbd7e83a1",
     "entities": [
       {
         "tableName": "gradecategory",
@@ -188,7 +188,7 @@
       },
       {
         "tableName": "enrollment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mEnrollmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mStudentId` INTEGER NOT NULL, `mCourseId` INTEGER NOT NULL, `mDate` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mEnrollmentId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `mStudentId` INTEGER NOT NULL, `mCourseId` INTEGER NOT NULL, `mDate` INTEGER)",
         "fields": [
           {
             "fieldPath": "mEnrollmentId",
@@ -211,7 +211,7 @@
           {
             "fieldPath": "mDate",
             "columnName": "mDate",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": false
           }
         ],
@@ -228,7 +228,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a90c12802d66e14e0c521bdc81a941d6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fc2b9963d9222846cb30362bbd7e83a1')"
     ]
   }
 }
