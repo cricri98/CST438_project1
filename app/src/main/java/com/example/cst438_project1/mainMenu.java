@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class mainMenu extends AppCompatActivity {
 
+    //done just have to link everything and do all that fun stuff
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
