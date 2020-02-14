@@ -12,14 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
+        startActivity(new Intent(this, LoginActivity.class));
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        if (currentUser.get() == null){
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
     }
 }

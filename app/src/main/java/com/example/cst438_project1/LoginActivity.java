@@ -1,6 +1,7 @@
 package com.example.cst438_project1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ public class LoginActivity extends AppCompatActivity {
     StudentAppDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("LoginActivity", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         database = Room.databaseBuilder(this, StudentAppDatabase.class, "database").build();
