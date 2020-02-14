@@ -6,6 +6,8 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
+    <string name="login_fail">Incorrect username or password</string>
+    <string name="login_succeed">Logged in!</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
 </resources>
