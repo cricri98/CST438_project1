@@ -4,5 +4,6 @@
     <string name="viewCourses">View Corses</string>
     <string name="viewAccount">View Account</string>
     <string name="viewAssignments">View Assignments</string>
+    <string name="viewGrades">View Grades</string>
     <string name="logout">Logout</string>
 </resources>
