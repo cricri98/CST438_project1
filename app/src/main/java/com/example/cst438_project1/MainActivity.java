@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //delete this this is just so that it goes to the main menu
         startActivity(new Intent(this, mainMenu.class));
     }
 
