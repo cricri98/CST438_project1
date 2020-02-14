@@ -9,7 +9,6 @@ import androidx.room.Update;
 import com.example.cst438_project1.Objects.User;
 
 @Dao
-
 public interface UserDAO {
 
     @Query("Select * from User WHERE ID = :id")
