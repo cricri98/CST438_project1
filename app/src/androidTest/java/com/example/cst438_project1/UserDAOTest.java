@@ -1,8 +1,6 @@
 package com.example.cst438_project1;
 
-import android.app.Application;
 import android.content.Context;
-import android.content.pm.InstrumentationInfo;
 
 import androidx.room.Room;
 
@@ -27,7 +25,7 @@ public class UserDAOTest{
 
         User test = new User();
         db.getUserDao().insertUser(test);
-        assertNotNull( db.getUserDao().getUser(test.getID()));
+        assertNotNull( db.getUserDao().getUserbyID(test.getID()));
     }
     /*Checks that User can be deleted from Room
      */
@@ -38,10 +36,10 @@ public class UserDAOTest{
 
         User test = new User();
         db.getUserDao().insertUser(test);
-        assertNotNull(db.getUserDao().getUser(test.getID()));
+        assertNotNull(db.getUserDao().getUserbyID(test.getID()));
 
         db.getUserDao().deleteUser(test);
-        assertEquals(0, db.getUserDao().getUser(test.getID()).length);
+        assertEquals(0, db.getUserDao().getUserbyID(test.getID()).length);
     }
     /*Checks that User can be updated in Room
      */
@@ -52,7 +50,7 @@ public class UserDAOTest{
 
         User test = new User();
         db.getUserDao().insertUser(test);
-        assertNotNull(db.getUserDao().getUser(test.getID()));
+        assertNotNull(db.getUserDao().getUserbyID(test.getID()));
 
         //Generate a random string/"name"
         Random r = new Random();
@@ -63,6 +61,6 @@ public class UserDAOTest{
 
         test.setName(name);
         db.getUserDao().updateUser(test);
-        assertEquals(name, db.getUserDao().getUser(test.getID())[0].getName());
+        assertEquals(name, db.getUserDao().getUserbyID(test.getID())[0].getName());
     }
 }
