@@ -6,13 +6,14 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.cst438_project1.Grade;
 @Dao
 public interface GradeDAO {
     @Insert
     void insertGrade(Grade... grade);
 
     @Update
-    void updatGrade(Grade... grade);
+    void updateGrade(Grade... grade);
 
     @Delete
     void deleteGrade(Grade... grade);

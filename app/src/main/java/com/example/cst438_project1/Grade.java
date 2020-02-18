@@ -12,7 +12,8 @@ public class Grade {
     @PrimaryKey(autoGenerate = true)
     private int mGradeId;
 
-    @ColumnInfo
+    // ColumnInfo name??
+    //@ColumnInfo
     private int mScore;
 
     private int mAssignementId;
@@ -22,7 +23,7 @@ public class Grade {
     private int mCourseId;
 
     //formatted  mmddyyyy
-    private String DateEarned;
+    private String mDateEarned;
 
     public Grade(int gradeId, int score, int assignementId, int studentId, int courseId, String dateEarned){
         this.mGradeId = gradeId;
@@ -30,7 +31,7 @@ public class Grade {
         this.mAssignementId = assignementId;
         this.mStudentId = studentId;
         this.mCourseId = courseId;
-        this.DateEarned = dateEarned;
+        this.mDateEarned = dateEarned;
     }
 
     public int getGradeId() { return mGradeId; }
@@ -40,14 +41,18 @@ public class Grade {
     public void setScore(int Score) { this.mScore = Score; }
 
     public int getAssignementId() { return mAssignementId; }
-    public void setmAssignementId(int mAssignementId) { this.mAssignementId = mAssignementId; }
+    public void setAssignementId(int mAssignementId) { this.mAssignementId = mAssignementId; }
 
     public int getStudentId() { return mStudentId; }
     public void setStudentId(int mStudentId) { this.mStudentId = mStudentId; }
 
-    public void setAssignementId(int mAssignementId) { this.mAssignementId = mAssignementId; }
+    public int getCourseId() { return mCourseId; }
+    public void setCourseId(int mCourseId) { this.mCourseId = mCourseId;}
 
-    public String getDateEarned(){ return DateEarned; }
 
-    public void setDateEarned(String dateEarned) { DateEarned = dateEarned; }
+   // public void setAssignementId(int mAssignementId) { this.mAssignementId = mAssignementId; }
+
+    public String getDateEarned(){ return mDateEarned; }
+
+    public void setDateEarned(String dateEarned) { mDateEarned = dateEarned; }
 }
