@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button1 = (Button) findViewById(R.id.button1);
-        Button button2 = (Button) findViewById(R.id.button2);
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
 
         //start create account activity
         button1.setOnClickListener(new View.OnClickListener() {
