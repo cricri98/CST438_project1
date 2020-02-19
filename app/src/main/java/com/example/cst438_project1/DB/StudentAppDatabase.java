@@ -12,7 +12,7 @@ import com.example.cst438_project1.Objects.Grade;
 import com.example.cst438_project1.Objects.GradeCategory;
 import com.example.cst438_project1.Objects.User;
 
-@Database(entities = {GradeCategory.class, Assignment.class, User.class, Course.class, Enrollment.class, Grade.class}, version =1)
+@Database(entities = {GradeCategory.class, Assignment.class, User.class, Course.class, Enrollment.class, Grade.class}, version =1, exportSchema = false)
 @TypeConverters(DateTypeConverter.class)
 public abstract class StudentAppDatabase extends RoomDatabase {
     //grade category

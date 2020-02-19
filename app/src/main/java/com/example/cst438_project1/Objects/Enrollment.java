@@ -1,6 +1,5 @@
 package com.example.cst438_project1.Objects;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
