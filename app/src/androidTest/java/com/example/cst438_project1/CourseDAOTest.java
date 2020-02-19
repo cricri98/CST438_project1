@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.Objects.Course;
 
 import org.junit.Test;

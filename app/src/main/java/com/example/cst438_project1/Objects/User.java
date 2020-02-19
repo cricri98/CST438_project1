@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Ignore
-    User(){
+    public User(){
         this.name = "Dan Default";
         this.password = "password1";
     }
