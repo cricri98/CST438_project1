@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.cst438_project1.MainMenuAtivities.AccountActivity;
 import com.example.cst438_project1.MainMenuAtivities.CourseViewerActivity;
-import com.example.cst438_project1.MainMenuAtivities.ViewAssignmentActivity;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
 import com.example.cst438_project1.MainMenuAtivities.ViewGradesActivity;
 
 public class mainMenu extends AppCompatActivity {
