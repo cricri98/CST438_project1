@@ -39,7 +39,7 @@ public class EnrollmentDAOTest {
 
         User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 
@@ -64,7 +64,7 @@ public class EnrollmentDAOTest {
 
         User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 
@@ -94,7 +94,7 @@ public class EnrollmentDAOTest {
 
         User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 

@@ -1,5 +1,6 @@
 package com.example.cst438_project1.Objects;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -69,26 +70,36 @@ public class User {
         this.password = password;
     }
 
-//    /*Returns true if the String matches the password
-//     *@param in The String to be checked.
-//     *@return boolean Does in match the password?
-//     */
-//
-//    public boolean isPassword(String in){
-//        return in.equals(password);
-//    }
-//
-//    /*Sets the password to new password and returns true if password_old matches the password, otherwise returns false
-//     *@param password_old The old password
-//     *@param password_new The new password
-//     *@return boolean Has the password been changed?
-//     */
-//
-//    public boolean setPassword(String password_old, String password_new){
-//        if (password_old.equals(password)){
-//            password = password_new;
-//            return true;
-//        }
-//        return false;
-//    }
+    /*Returns true if the String matches the password
+     *@param in The String to be checked.
+     *@return boolean Does in match the password?
+     */
+
+    public boolean isPassword(String in){
+        return in.equals(password);
+    }
+
+    /*Sets the password to new password and returns true if password_old matches the password, otherwise returns false
+     *@param password_old The old password
+     *@param password_new The new password
+     *@return boolean Has the password been changed?
+     */
+
+    public boolean setPassword(String password_old, String password_new){
+        if (password_old.equals(password)){
+            password = password_new;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID=" + ID +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

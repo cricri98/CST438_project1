@@ -7,8 +7,16 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.cst438_project1.DB.StudentAppDatabase;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
+
+    StudentAppDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        db = Room.databaseBuilder(getApplicationContext(), StudentAppDatabase.class, "db").allowMainThreadQueries().build();
 
         //delete this this is just so that it goes to the main menu
 //        startActivity(new Intent(this, mainMenu.class));
