@@ -12,10 +12,16 @@ import com.example.cst438_project1.Objects.User;
 public interface UserDAO {
 
     @Query("Select * from User WHERE ID = :id")
-    User getUser(int id);
+    User getUserById(int id);
+
+    @Query("Select * from User")
+    User[] getAll();
 
     @Query("Select * from User WHERE name = :name")
-    User getUser(String name);
+    User[] getUserByName(String name);
+
+    @Query("Select * from User WHERE username = :username")
+    User getUserByUsername(String username);
 
     @Update
     void updateUser(User... users);

@@ -12,9 +12,11 @@ import com.example.cst438_project1.Objects.Grade;
 import com.example.cst438_project1.Objects.GradeCategory;
 import com.example.cst438_project1.Objects.User;
 
-@Database(entities = {GradeCategory.class, Assignment.class, User.class, Course.class, Enrollment.class, Grade.class}, version =1)
+import java.io.Serializable;
+
+@Database(entities = {GradeCategory.class, Assignment.class, User.class, Course.class, Enrollment.class, Grade.class}, version =1, exportSchema = false)
 @TypeConverters(DateTypeConverter.class)
-public abstract class StudentAppDatabase extends RoomDatabase {
+public abstract class StudentAppDatabase extends RoomDatabase implements Serializable{
     //grade category
     public static final String GCName = "db-gradecategory";
     public static final String GRADECATEGORY_TABLE = "gradecategory";
@@ -41,8 +43,8 @@ public abstract class StudentAppDatabase extends RoomDatabase {
 
     public abstract GradeCategoryDAO getGradeCategoryDAO();
     public abstract AssignmentDAO getAssignmentDAO();
-    abstract public UserDAO getUserDao();
-    abstract public CourseDAO getCourseDAO();
-    abstract public EnrollmentDAO getEnrollmentDAO();
-    abstract public GradeDAO getGradeDAO();
+    public abstract UserDAO getUserDao();
+    public abstract CourseDAO getCourseDAO();
+    public abstract EnrollmentDAO getEnrollmentDAO();
+    public abstract GradeDAO getGradeDAO();
 }

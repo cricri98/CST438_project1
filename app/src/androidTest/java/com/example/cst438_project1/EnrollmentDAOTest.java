@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 /*Checks that DAO operations for User work.
  *@author Joshua Click
@@ -39,9 +37,9 @@ public class EnrollmentDAOTest {
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
-        User testUser = new User("Jim bo", "notAPassword");
+        User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 
@@ -64,9 +62,9 @@ public class EnrollmentDAOTest {
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
-        User testUser = new User("Jim bo", "notAPassword");
+        User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 
@@ -94,9 +92,9 @@ public class EnrollmentDAOTest {
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
-        User testUser = new User("Jim bo", "notAPassword");
+        User testUser = new User("username", "bob", "password");
         db.getUserDao().insertUser(testUser);
-        testUser = db.getUserDao().getUser(testUser.getName());
+        testUser = db.getUserDao().getUserByUsername(testUser.getUsername());
 
         Enrollment e = new Enrollment(testUser.getID(), testCourse.getCourseId(), d);
 

@@ -1,5 +1,6 @@
 package com.example.cst438_project1.Objects;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -18,6 +19,8 @@ public class User {
     @PrimaryKey(autoGenerate = true)
     private int ID;
 
+    private String username;
+
     @ColumnInfo(name = "name")
     private String name;
 
@@ -25,12 +28,8 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
-    @Ignore
-    public User(){
-        this.name = "Dan Default";
-        this.password = "password1";
-    }
-    public User(String name, String password){
+    public User(String username, String name, String password) {
+        this.username = username;
         this.name = name;
         this.password = password;
     }
@@ -46,9 +45,19 @@ public class User {
         this.ID = ID;
     }
 
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getName(){
         return name;
     }
+
     public void setName(String name){
         this.name = name;
     }
@@ -84,4 +93,13 @@ public class User {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID=" + ID +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
