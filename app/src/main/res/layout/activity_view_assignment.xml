@@ -24,14 +24,14 @@
         android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="94dp"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignmentDisplay"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/add"
@@ -40,34 +40,36 @@
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/delete"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toEndOf="@+id/edit"
         app:layout_constraintTop_toBottomOf="@+id/assignmentDisplay"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <Button
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="112dp"
-        android:layout_marginRight="112dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignmentDisplay"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <EditText
         android:id="@+id/assignmentID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="172dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Enter Assignment ID"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignmentDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/assignmentDisplay"
+        android:inputType="number"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

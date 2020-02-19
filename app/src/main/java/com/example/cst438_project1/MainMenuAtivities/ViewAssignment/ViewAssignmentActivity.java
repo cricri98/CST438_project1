@@ -20,6 +20,7 @@ import java.util.List;
 
 public class ViewAssignmentActivity extends AppCompatActivity {
 
+    //recieve the user key
     TextView mainDisplay;
 
     AssignmentDAO mAssignmentDAO;

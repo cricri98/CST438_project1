@@ -20,10 +20,17 @@ public class mainMenu extends AppCompatActivity {
     Button accountButton;
     Button gradesButton;
 
+    //user key
+    int userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        Intent intent = getIntent();
+        userID = intent.getIntExtra("userId", 0);
+
 
         coursesButton = findViewById(R.id.viewCoursesButton);
         assignmentsButton = findViewById(R.id.viewAssignmentsButton);
