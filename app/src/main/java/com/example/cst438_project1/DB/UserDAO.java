@@ -17,9 +17,6 @@ public interface UserDAO {
     @Query("Select * from User")
     User[] getAll();
 
-    @Query("Select * from User WHERE name = :name")
-    User[] getUserByName(String name);
-
     @Query("Select * from User WHERE username = :username")
     User getUserByUsername(String username);
 

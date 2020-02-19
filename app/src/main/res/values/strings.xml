@@ -7,6 +7,7 @@
     <string name="viewGrades">View Grades</string>
     <string name="logout">Logout</string>
     <string name="createAccount">Create Account</string>
+    <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="usernameError">Username is taken</string>
     <string name="password">Password</string>
@@ -14,4 +15,5 @@
 
 
     <string name="aboveIsEmpty">One of the above fields is empty</string>
+    <string name="logError">Wrong username or password</string>
 </resources>
