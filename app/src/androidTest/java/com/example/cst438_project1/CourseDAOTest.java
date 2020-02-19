@@ -10,6 +10,7 @@ import com.example.cst438_project1.Objects.Course;
 
 import org.junit.Test;
 
+import java.nio.charset.Charset;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
