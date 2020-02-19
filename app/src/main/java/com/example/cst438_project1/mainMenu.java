@@ -19,16 +19,22 @@ public class mainMenu extends AppCompatActivity {
     Button assignmentsButton;
     Button accountButton;
     Button gradesButton;
+    Button logoutButton;
+
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        userId = getIntent().getIntExtra("userId", -1);
+
         coursesButton = findViewById(R.id.viewCoursesButton);
         assignmentsButton = findViewById(R.id.viewAssignmentsButton);
         accountButton = findViewById(R.id.viewAccountButton);
         gradesButton = findViewById(R.id.viewGradesButton);
+        logoutButton = findViewById(R.id.logoutButton);
 
         coursesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +63,13 @@ public class mainMenu extends AppCompatActivity {
                 openGradesView();
             }
         });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void openCourseView(){
@@ -71,11 +84,20 @@ public class mainMenu extends AppCompatActivity {
 
     public void openAccountView(){
         Intent i = new Intent(this, AccountActivity.class);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 
     public void openGradesView(){
         Intent i = new Intent(this, ViewGradesActivity.class);
         startActivity(i);
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

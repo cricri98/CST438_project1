@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuAtivities.AccountActivity">
 
+    <TextView
+        android:id="@+id/accountHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/viewAccount"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/username"
+        app:layout_constraintStart_toStartOf="@+id/accountHeader"
+        app:layout_constraintTop_toBottomOf="@+id/accountHeader" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="@+id/tvUn"
+        app:layout_constraintTop_toBottomOf="@+id/tvUn" />
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/userId"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/usernameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvUn"
+        app:layout_constraintTop_toTopOf="@+id/tvUn" />
+
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/usernameView"
+        app:layout_constraintTop_toBottomOf="@+id/usernameView" />
+
+    <TextView
+        android:id="@+id/userIdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/nameView"
+        app:layout_constraintTop_toBottomOf="@+id/nameView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
