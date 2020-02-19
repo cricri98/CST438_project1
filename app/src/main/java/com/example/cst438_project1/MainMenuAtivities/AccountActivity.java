@@ -1,15 +1,17 @@
-package com.example.cst438_project1;
+package com.example.cst438_project1.MainMenuAtivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CourseViewerActivity extends AppCompatActivity {
+import com.example.cst438_project1.R;
+
+public class AccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_viewer);
+        setContentView(R.layout.activity_account);
     }
 
     @Override

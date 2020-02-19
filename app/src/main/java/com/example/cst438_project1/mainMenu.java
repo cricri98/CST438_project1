@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.cst438_project1.MainMenuAtivities.AccountActivity;
+import com.example.cst438_project1.MainMenuAtivities.CourseViewerActivity;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignmentActivity;
+import com.example.cst438_project1.MainMenuAtivities.ViewGradesActivity;
+
 public class mainMenu extends AppCompatActivity {
 
     //done just have to link everything and do all that fun stuff

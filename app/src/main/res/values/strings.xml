@@ -6,4 +6,7 @@
     <string name="viewAssignments">View Assignments</string>
     <string name="viewGrades">View Grades</string>
     <string name="logout">Logout</string>
+    <string name="createAccount">Create Account</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

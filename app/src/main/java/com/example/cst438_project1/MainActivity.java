@@ -35,17 +35,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //delete this this is just so that it goes to the main menu
-        startActivity(new Intent(this, mainMenu.class));
+//        startActivity(new Intent(this, mainMenu.class));
     }
 
     void openCreateAcc(){
-        Intent CAccount = new Intent(this, CreateAccount.class);
-        startActivity(CAccount);
+        Intent i = new Intent(this, CreateAccount.class);
+        startActivity(i);
     }
 
     void openLogin(){
-        Intent Login = new Intent(this, Login.class);
-        startActivity(Login);
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
 
