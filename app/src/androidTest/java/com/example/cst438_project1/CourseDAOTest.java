@@ -8,6 +8,12 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
 
 import java.nio.charset.Charset;
+import com.example.cst438_project1.DB.TypeConverters.*;
+import com.example.cst438_project1.Objects.Course;
+import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.DB.CourseDAO;
+
+import org.junit.Test;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -26,10 +32,9 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        int Iid = r.nextInt();
-        Course test = new Course("Test", Iid, "1/1/2020", "2/2/2020", "blah blah");
+        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
         db.getCourseDAO().insert(test);
-        assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
+        assertNotNull(db.getCourseDAO().getCourseByName(test.getCourseName()));
     }
     /*Checks that Course can be deleted from Room
      */

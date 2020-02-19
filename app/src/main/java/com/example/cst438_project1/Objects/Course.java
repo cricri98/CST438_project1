@@ -1,15 +1,15 @@
-package com.example.cst438_project1;
+package com.example.cst438_project1.Objects;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = StudentAppDatabase.COURSE_TABLE)
+@Entity
 public class Course{
-
     @PrimaryKey(autoGenerate = true)
     private int mCourseId;
 
+    @ColumnInfo(name = "course-name")
     private String mCourseName;
 
     private int mInstructorId;

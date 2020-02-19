@@ -1,8 +1,10 @@
-package com.example.cst438_project1;
+package com.example.cst438_project1.Objects;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.cst438_project1.DB.StudentAppDatabase;
 
 /*Contains personal data for user.
  *@author Joshua Click
@@ -10,7 +12,7 @@ import androidx.room.PrimaryKey;
  * 0.1: First created
  * 0.2: Added password
  */
-@Entity
+@Entity(tableName = StudentAppDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int ID;

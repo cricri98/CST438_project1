@@ -1,4 +1,4 @@
-package com.example.cst438_project1;
+package com.example.cst438_project1.DB;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,14 +6,13 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-@Dao
+import com.example.cst438_project1.Objects.User;
 
+@Dao
 public interface UserDAO {
 
     @Query("Select * from User WHERE ID = :id")
-    User[] getUserbyID(int id);
-    @Query("Select * from User Where name = :name")
-    User[] getUserbyName(String name);
+    User[] getUser(int id);
 
     @Update
     void updateUser(User... users);
