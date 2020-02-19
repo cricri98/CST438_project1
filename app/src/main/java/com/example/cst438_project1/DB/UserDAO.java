@@ -22,6 +22,7 @@ public interface UserDAO {
 
     @Update
     void updateUser(User... users);
+
     @Insert
     void insertUser(User... users);
 

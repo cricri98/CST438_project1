@@ -111,16 +111,10 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return "Assignment{" +
-                "mDetails='" + mDetails + '\'' +
-                ", mMaxScore=" + mMaxScore +
-                ", mEarnedScore=" + mEarnedScore +
-                ", mAssignedDate='" + mAssignedDate + '\'' +
-                ", mDueDate='" + mDueDate + '\'' +
-                ", mCategoryID=" + mCategoryID +
-                ", mCourseID=" + mCourseID +
-                ", mAssignmentID=" + mAssignmentID +
-                '}';
+        return  "Details: " + mDetails + "\n" +
+                "Max Score: " + mMaxScore + " || Earned Score: " + mEarnedScore + "\n" +
+                "Assigned Date: '" + mAssignedDate + " || Due Date: " + mDueDate + "\n" +
+                "Category ID: " + mCategoryID + " || Course ID: " + mCourseID + " || Assignment ID: " + mAssignmentID + "\n";
     }
 
 
