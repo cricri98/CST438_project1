@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.example.cst438_project1.DB.TypeConverters.DateTypeConverter;
+import com.example.cst438_project1.DB.TypeConverters.IntListTypeConverter;
 import com.example.cst438_project1.Objects.Assignment;
 import com.example.cst438_project1.Objects.Course;
 import com.example.cst438_project1.Objects.Enrollment;
@@ -15,7 +16,7 @@ import com.example.cst438_project1.Objects.User;
 import java.io.Serializable;
 
 @Database(entities = {GradeCategory.class, Assignment.class, User.class, Course.class, Enrollment.class, Grade.class}, version =1, exportSchema = false)
-@TypeConverters(DateTypeConverter.class)
+@TypeConverters({DateTypeConverter.class, IntListTypeConverter.class})
 public abstract class StudentAppDatabase extends RoomDatabase implements Serializable{
     //grade category
     public static final String GCName = "db-gradecategory";
