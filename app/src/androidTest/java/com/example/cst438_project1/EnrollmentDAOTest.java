@@ -33,7 +33,7 @@ public class EnrollmentDAOTest {
 
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
@@ -58,7 +58,7 @@ public class EnrollmentDAOTest {
 
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
@@ -88,7 +88,7 @@ public class EnrollmentDAOTest {
 
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 

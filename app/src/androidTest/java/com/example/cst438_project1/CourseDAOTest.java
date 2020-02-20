@@ -11,6 +11,7 @@ import com.example.cst438_project1.Objects.Course;
 import org.junit.Test;
 
 import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -29,7 +30,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
     }
@@ -41,7 +42,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
@@ -58,7 +59,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), "1/1/2020", "2/2/2020", "blah blah");
+        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 

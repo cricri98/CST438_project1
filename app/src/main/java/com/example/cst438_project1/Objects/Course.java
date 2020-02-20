@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity
 public class Course{
     @PrimaryKey(autoGenerate = true)
@@ -14,18 +16,22 @@ public class Course{
 
     private int mInstructorId;
 
-    //formatted like mmddyyyy
-    private String mStartDate;
-    private String mEndDate;
+    private Date mStartDate;
+    private Date mEndDate;
 
     private String mDescription;
 
-    public Course(String courseName, int instructorId, String startDate, String endDate, String description) {
+    private int[] mStudentIds;
+    private int mMaxSize;
+
+    public Course(String courseName, int instructorId, Date startDate, Date endDate, String description, int maxSize) {
         mCourseName = courseName;
         mInstructorId = instructorId;
         mStartDate = startDate;
         mEndDate = endDate;
         mDescription = description;
+        mMaxSize = maxSize;
+        mStudentIds = new int[maxSize];
     }
 
     public int getCourseId() {
@@ -52,19 +58,19 @@ public class Course{
         mInstructorId = instructorId;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return mStartDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         mStartDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return mEndDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         mEndDate = endDate;
     }
 
@@ -74,5 +80,21 @@ public class Course{
 
     public void setDescription(String description) {
         mDescription = description;
+    }
+
+    public int[] getStudentIds() {
+        return mStudentIds;
+    }
+
+    public void setStudentIds(int[] studentIds) {
+        mStudentIds = studentIds;
+    }
+
+    public int getMaxSize() {
+        return mMaxSize;
+    }
+
+    public void setMaxSize(int maxSize) {
+        mMaxSize = maxSize;
     }
 }

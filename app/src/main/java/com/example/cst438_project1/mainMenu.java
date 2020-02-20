@@ -73,6 +73,7 @@ public class mainMenu extends AppCompatActivity {
 
     public void openAssignmentView(){
         Intent i = new Intent(this, ViewAssignmentActivity.class);
+        i.putExtra("userId", userID);
         startActivity(i);
     }
 
