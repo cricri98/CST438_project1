@@ -29,5 +29,8 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM " + StudentAppDatabase.COURSE_TABLE + " WHERE `course-name` = :courseName")
     Course getCourseByName(String courseName);
+
+    @Query("DELETE FROM " + StudentAppDatabase.COURSE_TABLE)
+    void nuke();
 }
 

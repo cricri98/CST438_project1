@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.Objects.Course;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +47,20 @@ public class MainActivity extends AppCompatActivity {
 
         //delete this this is just so that it goes to the main menu
 //        startActivity(new Intent(this, mainMenu.class));
+
+        //putting in dummy courses until we can add them through the app
+        db.getCourseDAO().nuke();
+        addCourses(10);
+    }
+
+    private void addCourses(int size){
+        for(int i = 0; i < size; i++){
+            Course c = new Course("Course" + i, 0000, new Date(2020, 1, 1), new Date(2020, 5, 21),
+                                "This is the " + i + " course", 15);
+
+            db.getCourseDAO().insert(c);
+        }
+
     }
 
     void openCreateAcc(){

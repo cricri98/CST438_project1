@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CST438_project1</string>
     <string name="mainMenu">Main Menu</string>
-    <string name="viewCourses">View Corses</string>
+    <string name="viewCourses">View Courses</string>
     <string name="viewAccount">View Account</string>
     <string name="viewAssignments">View Assignments</string>
     <string name="viewGrades">View Grades</string>
