@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cst438_project1.DB.AssignmentDAO;
 import com.example.cst438_project1.DB.CourseDAO;
@@ -29,6 +31,8 @@ public class ViewAssignmentActivity extends AppCompatActivity {
 
     TextView mainDisplay;
 
+    EditText assignmentIDET;
+
     AssignmentDAO mAssignmentDAO;
     List<Assignment> assignments;
 
@@ -44,6 +48,7 @@ public class ViewAssignmentActivity extends AppCompatActivity {
 
     StudentAppDatabase db;
 
+    Integer savedAssignmentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,8 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_assignment);
 
         db = Room.databaseBuilder(getApplicationContext(), StudentAppDatabase.class, "db").allowMainThreadQueries().build();
+
+        assignmentIDET = findViewById(R.id.assignmentID);
 
         //receive the user key
         Intent intent = getIntent();
@@ -160,23 +167,60 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     }
 
     public void editAssignment(){
-        Intent eA = new Intent(this, editAssignment.class);
-        //pass user key
-//        eA.putExtra();
-        //pass assignment key
-//        eA.putExtra();
-        startActivity(eA);
-        finish();
+        if(assignmentIDET.getText().toString().trim().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Enter an Assignment ID to Edit", Toast.LENGTH_LONG).show();
+            return;
+        } else{
+            savedAssignmentID = Integer.parseInt(assignmentIDET.getText().toString());
+        }
+
+        //search for assignment
+        if(!assignments.isEmpty()){
+            for(Assignment a: assignments){
+                if(a.getAssignmentID() == savedAssignmentID){
+                    Intent dA = new Intent(this, editAssignment.class);
+                    //pass user key
+                    // dA.putExtra();
+
+                    //pass assignment key
+                    dA.putExtra("assignmentKey", savedAssignmentID);
+                    startActivity(dA);
+                    finish();
+                    return;
+                }
+            }
+            Toast.makeText(getApplicationContext(), "Invalid assignment ID", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void deleteAssignment(){
-        Intent dA = new Intent(this, deleteAssignment.class);
-        //pass user key
-//        dA.putExtra();
-        //pass assignment key
-//        dA.putExtra();
-        startActivity(dA);
-        finish();
+        if(assignmentIDET.getText().toString().trim().isEmpty()){
+            Toast.makeText(getApplicationContext(), "Enter an Assignment ID to Delete", Toast.LENGTH_LONG).show();
+            return;
+        } else{
+            savedAssignmentID = Integer.parseInt(assignmentIDET.getText().toString());
+        }
+
+        //search for assignment
+        if(!assignments.isEmpty()){
+            for(Assignment a: assignments){
+                if(a.getAssignmentID() == savedAssignmentID){
+//                    Intent dA = new Intent(this, deleteAssignment.class);
+//                    //pass user key
+//                    // dA.putExtra();
+//
+//                    //pass assignment key
+//                    dA.putExtra("assignmentKey", savedAssignmentID);
+//                    startActivity(dA);
+                    //delete assignment
+                    db.getAssignmentDAO().delete(a);
+                    Toast.makeText(getApplicationContext(), "Assignment #" + savedAssignmentID + " deleted", Toast.LENGTH_LONG).show();
+                    refreshDisplay();
+                    return;
+                }
+            }
+            Toast.makeText(getApplicationContext(), "Invalid assignment ID", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

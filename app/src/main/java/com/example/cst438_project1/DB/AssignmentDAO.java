@@ -25,5 +25,8 @@ public interface AssignmentDAO {
     List<Assignment> getAssignments();
 
     @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mAssignmentID = :assignmentId")
-    List<Assignment> getAssignmentById(Integer assignmentId);
+    Assignment getAssignmentById(Integer assignmentId);
+
+    @Query("UPDATE Assignment SET mMaxScore =:maxScore ,mEarnedScore=:earnedScore WHERE mAssignmentID =:assignmentId")
+    void updateUser(Integer assignmentId,float maxScore, float earnedScore);
 }
