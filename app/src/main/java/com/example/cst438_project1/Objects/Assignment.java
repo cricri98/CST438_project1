@@ -34,7 +34,7 @@ public class Assignment {
     private Integer mCourseID;
 
     public Assignment(String details, float maxScore, float earnedScore, String assignedDate,
-                      String dueDate, Integer categoryID, Integer courseID, Integer assignmentID) {
+                      String dueDate, Integer categoryID, Integer courseID) {
         mDetails = details;
         mMaxScore = maxScore;
         mEarnedScore = earnedScore;
@@ -42,7 +42,6 @@ public class Assignment {
         mDueDate = dueDate;
         mCategoryID = categoryID;
         mCourseID = courseID;
-        mAssignmentID = assignmentID;
     }
 
     public String getDetails() {
@@ -111,7 +110,8 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return  "Details: " + mDetails + "\n" +
+        return  "--------------------------------------------------------------------\n" +
+                "Details: " + mDetails + "\n" +
                 "Max Score: " + mMaxScore + " || Earned Score: " + mEarnedScore + "\n" +
                 "Assigned Date: '" + mAssignedDate + " || Due Date: " + mDueDate + "\n" +
                 "Category ID: " + mCategoryID + " || Course ID: " + mCourseID + " || Assignment ID: " + mAssignmentID + "\n";
