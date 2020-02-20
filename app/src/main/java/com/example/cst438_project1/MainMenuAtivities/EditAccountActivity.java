@@ -19,8 +19,6 @@ public class EditAccountActivity extends AppCompatActivity {
 
     Button saveAccountButton;
 
-    TextView tempUsers;
-
     StudentAppDatabase db;
 
     int userId;
@@ -29,7 +27,6 @@ public class EditAccountActivity extends AppCompatActivity {
     EditText username;
     EditText name;
     EditText password;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,31 +54,7 @@ public class EditAccountActivity extends AppCompatActivity {
         });
 
         populate();
-        //updateTempText();
-/*
-        tempUsers.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                for(User u : db.getUserDao().getAll()){
-                    db.getUserDao().deleteUser(u);
-                }
-                updateTempText();
-                return false;
-            }
-        });
-*/
     }
-
-    private void updateTempText(){
-        String temp = "";
-        User[] users = db.getUserDao().getAll();
-
-        for(User us : users){
-            temp = temp + us + '\n';
-        }
-        tempUsers.setText(temp);
-    }
-
 
     //checks to see if username is duplicate or invalid
     //has no constraints for username format, yet
