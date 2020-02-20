@@ -20,10 +20,14 @@ public class mainMenu extends AppCompatActivity {
     Button accountButton;
     Button gradesButton;
 
+    int userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        userId = getIntent().getIntExtra("userId", -1);
 
         coursesButton = findViewById(R.id.viewCoursesButton);
         assignmentsButton = findViewById(R.id.viewAssignmentsButton);
@@ -61,21 +65,25 @@ public class mainMenu extends AppCompatActivity {
 
     public void openCourseView(){
         Intent i = new Intent(this, CourseViewerActivity.class);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 
     public void openAssignmentView(){
         Intent i = new Intent(this, ViewAssignmentActivity.class);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 
     public void openAccountView(){
         Intent i = new Intent(this, AccountActivity.class);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 
     public void openGradesView(){
         Intent i = new Intent(this, ViewGradesActivity.class);
+        i.putExtra("userId", userId);
         startActivity(i);
     }
 }
