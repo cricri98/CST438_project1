@@ -30,17 +30,15 @@ public class Assignment {
     private String mAssignedDate;
     private String mDueDate;
 
-    private Integer mCategoryID;
     private Integer mCourseID;
 
     public Assignment(String details, float maxScore, float earnedScore, String assignedDate,
-                      String dueDate, Integer categoryID, Integer courseID) {
+                      String dueDate, Integer courseID) {
         mDetails = details;
         mMaxScore = maxScore;
         mEarnedScore = earnedScore;
         mAssignedDate = assignedDate;
         mDueDate = dueDate;
-        mCategoryID = categoryID;
         mCourseID = courseID;
     }
 
@@ -84,14 +82,6 @@ public class Assignment {
         this.mDueDate = mDueDate;
     }
 
-    public Integer getCategoryID() {
-        return mCategoryID;
-    }
-
-    public void setCategoryID(Integer mCategoryID) {
-        this.mCategoryID = mCategoryID;
-    }
-
     public Integer getCourseID() {
         return mCourseID;
     }
@@ -113,8 +103,7 @@ public class Assignment {
         return  "--------------------------------------------------------------------\n" +
                 "Details: " + mDetails + "\n" +
                 "Max Score: " + mMaxScore + " || Earned Score: " + mEarnedScore + "\n" +
-                "Assigned Date: '" + mAssignedDate + " || Due Date: " + mDueDate + "\n" +
-                "Category ID: " + mCategoryID + " || Course ID: " + mCourseID + " || Assignment ID: " + mAssignmentID + "\n";
+                "Assigned Date: '" + mAssignedDate + " || Due Date: " + mDueDate + "\n" + " || Course ID: " + mCourseID + " || Assignment ID: " + mAssignmentID + "\n";
     }
 
 

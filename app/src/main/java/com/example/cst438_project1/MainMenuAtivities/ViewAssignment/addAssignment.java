@@ -47,7 +47,6 @@ public class addAssignment extends AppCompatActivity {
         mDetails = findViewById(R.id.a);
         mAssignedDate = findViewById(R.id.b);
         mDueDate = findViewById(R.id.c);
-        mCategoryID = findViewById(R.id.d);
         mCourseID = findViewById(R.id.e);
         mMaxScore = findViewById(R.id.f);
         mEarnedScore = findViewById(R.id.g);
@@ -76,18 +75,17 @@ public class addAssignment extends AppCompatActivity {
         String assignedDate = mAssignedDate.getText().toString();
         String dueDate = mDueDate.getText().toString();
 
-        Integer categoryID = Integer.parseInt(mCategoryID.getText().toString());
-
-
         String courseName = mCourseID.getSelectedItem().toString();
 
         Integer courseID = db.getCourseDAO().getCourseByName(courseName).getCourseId();
 
 
-        Assignment a = new Assignment(details, maxScore, earnedScore, assignedDate, dueDate, categoryID, courseID);
+        Assignment a = new Assignment(details, maxScore, earnedScore, assignedDate, dueDate, courseID);
 
         db.getAssignmentDAO().insert(a);
         Toast.makeText(getApplicationContext(), "Assignment Created", Toast.LENGTH_LONG).show();
+
+
 
         finish();
     }

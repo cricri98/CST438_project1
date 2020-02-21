@@ -44,7 +44,7 @@ public class AssignmentDAOTest {
         String assignDesc = "ie1";
 
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
-                "ie3", r.nextInt(), r.nextInt());
+                "ie3", r.nextInt());
 
         db.getAssignmentDAO().insert(test);
         test = db.getAssignmentDAO().getAssignmentByDesc(assignDesc).get(0);
@@ -64,7 +64,7 @@ public class AssignmentDAOTest {
         String assignDesc = "ie1";
 
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
-                "ie3", r.nextInt(), r.nextInt());
+                "ie3", r.nextInt());
 
         db.getAssignmentDAO().insert(test);
         test = db.getAssignmentDAO().getAssignmentByDesc(assignDesc).get(0);

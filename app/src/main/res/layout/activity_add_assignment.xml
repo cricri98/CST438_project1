@@ -48,19 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/b" />
 
     <EditText
-        android:id="@+id/d"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/c"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:hint="Enter Category ID"
-        android:inputType="numberSigned"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/c" />
-
-    <EditText
         android:id="@+id/f"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,6 +110,6 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d" />
+        app:layout_constraintTop_toBottomOf="@+id/c" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
