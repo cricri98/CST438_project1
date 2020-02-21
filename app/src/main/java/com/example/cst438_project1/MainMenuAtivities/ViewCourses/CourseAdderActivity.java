@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.Objects.Course;
@@ -61,6 +62,14 @@ public class CourseAdderActivity extends AppCompatActivity {
 
         Course newCourse = new Course(name, startDate, endDate, desc, size);
 
+        for(Course c : db.getCourseDAO().getCourses()){
+            if(c.getCourseName().equals(newCourse.getCourseName())){
+                Toast toast=Toast.makeText(getApplicationContext(),"Course name already taken",Toast.LENGTH_LONG);
+                toast.show();
+
+                return;
+            }
+        }
         db.getCourseDAO().insert(newCourse);
 
         onBackPressed();
