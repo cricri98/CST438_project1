@@ -17,13 +17,15 @@ import com.example.cst438_project1.R;
 
 public class AccountActivity extends AppCompatActivity {
 
+    boolean edit;
     int userId;
     User u;
     StudentAppDatabase db;
 
+    TextView userIdView;
     TextView usernameView;
     TextView nameView;
-    TextView userIdView;
+    TextView passwordView;
 
     Button editAccount;
 
@@ -46,13 +48,15 @@ public class AccountActivity extends AppCompatActivity {
         editAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                editAccountActivity();
+                editAccount();
             }
         });
         updateViews();
+        edit = false;
     }
 
     void updateViews(){
+        Toast.makeText(getApplicationContext(), "update!", Toast.LENGTH_LONG).show();
         try {
             usernameView.setText(u.getUsername());
             nameView.setText(u.getName());
@@ -70,9 +74,14 @@ public class AccountActivity extends AppCompatActivity {
         finish();
     }
 
-    public void editAccountActivity(){
-        Intent i = new Intent(this, EditAccountActivity.class);
-        i.putExtra("userId", userId);
-        startActivity(i);
+    public void editAccount(){
+        if (edit){
+            usernameView.setFocusable(false);
+            nameView.setFocusable(false);
+            passwordView.setFocusable(false);
+
+        }else {
+
+        }
     }
 }
