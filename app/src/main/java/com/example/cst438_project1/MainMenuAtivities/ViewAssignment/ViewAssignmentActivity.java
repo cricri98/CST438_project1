@@ -159,18 +159,23 @@ public class ViewAssignmentActivity extends AppCompatActivity {
             }
         }
 
+        boolean courseHasAssignment = false;
         //display all assignments with the courseID
         if(!assignments.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
             for(Assignment a: assignments){
                     if(a.getCourseID() == courseID)
-                    stringBuilder.append(a.toString());
+                        courseHasAssignment = true;
+                        stringBuilder.append(a.toString());
                 }
             mainDisplay.setText(stringBuilder.toString());
         } else {
             mainDisplay.setText("NO ASSIGNMENTS DUE FOR COURSE: " + savedCourseName);
         }
 
+        if(courseHasAssignment == false){
+            mainDisplay.setText("NO ASSIGNMENTS DUE FOR COURSE: " + savedCourseName);
+        }
     }
 
     public void addAssignment(){

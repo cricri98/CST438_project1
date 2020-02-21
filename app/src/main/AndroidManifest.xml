@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenuAtivities.ViewCourses.CourseAdderActivity"></activity>
+        <activity android:name=".MainMenuAtivities.ViewAccount.editAccount"></activity>
+        <activity android:name=".MainMenuAtivities.ViewCourses.CourseAdderActivity" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.deleteAssignment" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.editAssignment" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.addAssignment" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".Login" />
         <activity android:name=".MainMenuAtivities.ViewGradesActivity" />
-        <activity android:name=".MainMenuAtivities.AccountActivity" />
+        <activity android:name=".MainMenuAtivities.ViewAccount.AccountActivity" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.ViewAssignmentActivity" />
         <activity android:name=".MainMenuAtivities.ViewCourses.CourseViewerActivity" />
         <activity android:name=".mainMenu" />

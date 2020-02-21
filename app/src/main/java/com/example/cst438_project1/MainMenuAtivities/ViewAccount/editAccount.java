@@ -1,21 +1,20 @@
-package com.example.cst438_project1.MainMenuAtivities;
+package com.example.cst438_project1.MainMenuAtivities.ViewAccount;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
 
-public class EditAccountActivity extends AppCompatActivity {
+public class editAccount extends AppCompatActivity {
 
     Button saveAccountButton;
 
@@ -31,7 +30,8 @@ public class EditAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_account);
+        setContentView(R.layout.activity_edit_account);
+
         db = Room.databaseBuilder(getApplicationContext(), StudentAppDatabase.class, "db").allowMainThreadQueries().build();
 
         saveAccountButton = findViewById(R.id.save_account);
@@ -74,7 +74,7 @@ public class EditAccountActivity extends AppCompatActivity {
                 currentUser.setPassword(savedPassword);
 
                 db.getUserDao().updateUser(currentUser);
-
+                Toast.makeText(getApplicationContext(), "Account has Been Updated", Toast.LENGTH_LONG).show();
                 finish();
             } catch (Resources.NotFoundException e) {
                 Toast.makeText(getApplicationContext(), R.string.usernameError, Toast.LENGTH_LONG).show();

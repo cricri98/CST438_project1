@@ -1,4 +1,4 @@
-package com.example.cst438_project1.MainMenuAtivities;
+package com.example.cst438_project1.MainMenuAtivities.ViewAccount;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
-import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
+import com.example.cst438_project1.MainMenuAtivities.EA;
 import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
 
@@ -71,8 +71,9 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void editAccountActivity(){
-        Intent i = new Intent(this, EditAccountActivity.class);
+        Intent i = new Intent(this, editAccount.class);
         i.putExtra("userId", userId);
         startActivity(i);
+        finish();
     }
 }
