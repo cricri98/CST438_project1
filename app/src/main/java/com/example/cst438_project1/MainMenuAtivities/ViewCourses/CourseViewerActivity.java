@@ -43,14 +43,6 @@ public class CourseViewerActivity extends AppCompatActivity {
         initRecyclerView();
     }
 
-    public void addCourseToUser(String courseName){
-        User u = db.getUserDao().getUserById(getIntent().getIntExtra("userId", -1));
-        Course c = db.getCourseDAO().getCourseByName(courseName);
-        List<Integer> tempList= u.getCourseList();
-        tempList.add(c.getCourseId());
-        u.setCourseList(tempList);
-    }
-
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.CourseViewRecycler);
         CourseRecyclerViewAdapter adapter = new CourseRecyclerViewAdapter(mCourseNames, mCourseDesc, mCourseGrades, this);
