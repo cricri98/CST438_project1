@@ -163,6 +163,7 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         //pass course key
 //        aA.putExtra();
         startActivity(aA);
+        aA.putExtra("userId", userID);
         finish();
     }
 
