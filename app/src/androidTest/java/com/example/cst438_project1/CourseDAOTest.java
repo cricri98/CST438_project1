@@ -30,7 +30,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course test = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
     }
@@ -42,7 +42,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course test = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
@@ -59,7 +59,7 @@ public class CourseDAOTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
-        Course test = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course test = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(test);
         assertNotNull( db.getCourseDAO().getCourseByName(test.getCourseName()));
 
@@ -85,7 +85,7 @@ public class CourseDAOTest {
         Random r = new Random();
         int rNumber = Math.abs(r.nextInt(100) + 1);
         for(int i = 0; i < rNumber; i++) {
-            Course test = new Course("Test" + i, r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah" + i, 30);
+            Course test = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
             db.getCourseDAO().insert(test);
         }
 

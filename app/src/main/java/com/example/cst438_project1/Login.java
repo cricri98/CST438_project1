@@ -39,6 +39,10 @@ public class Login extends AppCompatActivity {
                 tryLogin();
             }
         });
+
+//        usernameField.setText("user1");
+//        passwordField.setText("pass");
+//        tryLogin();
     }
 
     void tryLogin(){

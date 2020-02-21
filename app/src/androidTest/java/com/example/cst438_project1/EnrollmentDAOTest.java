@@ -29,11 +29,9 @@ public class EnrollmentDAOTest {
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
-        Random r = new Random();
-
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course testCourse = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
@@ -54,11 +52,9 @@ public class EnrollmentDAOTest {
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
-        Random r = new Random();
-
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course testCourse = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 
@@ -84,11 +80,9 @@ public class EnrollmentDAOTest {
         Context c = InstrumentationRegistry.getInstrumentation().getContext();
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
-        Random r = new Random();
-
         Date d = new Date(2020, 10, 10);
 
-        Course testCourse = new Course("Test", r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
+        Course testCourse = new Course("Test", new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah", 30);
         db.getCourseDAO().insert(testCourse);
         testCourse = db.getCourseDAO().getCourseByName(testCourse.getCourseName());
 

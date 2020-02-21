@@ -17,4 +17,11 @@
     <string name="aboveIsEmpty">One of the above fields is empty</string>
     <string name="logError">Wrong username or password</string>
     <string name="error">ERROR</string>
+
+    <string name="addCourse">Add Course</string>
+    <string name="courseName">Course Name</string>
+    <string name="startDate">Start Date</string>
+    <string name="endDate">End Date</string>
+    <string name="description">Description</string>
+    <string name="size">Max Size</string>
 </resources>

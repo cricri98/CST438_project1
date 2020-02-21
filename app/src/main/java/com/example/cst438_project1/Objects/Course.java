@@ -14,8 +14,6 @@ public class Course{
     @ColumnInfo(name = "course-name")
     private String mCourseName;
 
-    private int mInstructorId;
-
     private Date mStartDate;
     private Date mEndDate;
 
@@ -24,9 +22,8 @@ public class Course{
     private int[] mStudentIds;
     private int mMaxSize;
 
-    public Course(String courseName, int instructorId, Date startDate, Date endDate, String description, int maxSize) {
+    public Course(String courseName, Date startDate, Date endDate, String description, int maxSize) {
         mCourseName = courseName;
-        mInstructorId = instructorId;
         mStartDate = startDate;
         mEndDate = endDate;
         mDescription = description;
@@ -48,14 +45,6 @@ public class Course{
 
     public void setCourseName(String courseName) {
         mCourseName = courseName;
-    }
-
-    public int getInstructorId() {
-        return mInstructorId;
-    }
-
-    public void setInstructorId(int instructorId) {
-        mInstructorId = instructorId;
     }
 
     public Date getStartDate() {

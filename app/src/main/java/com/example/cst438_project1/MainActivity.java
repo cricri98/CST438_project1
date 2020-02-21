@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addCourses(int size) {
         for (int i = 0; i < size; i++) {
-            Course c = new Course("Course" + i, 0000, new Date(2020, 1, 1), new Date(2020, 5, 21),
+            Course c = new Course("Course" + i, new Date(2020, 1, 1), new Date(2020, 5, 21),
                     "This is the " + i + " course", 15);
 
             db.getCourseDAO().insert(c);

@@ -72,7 +72,7 @@ public class AssignmentDAOTest {
         assertNotNull( db.getAssignmentDAO().getAssignmentById(test.getAssignmentID()));
 
         db.getAssignmentDAO().delete(test);
-        assertNotNull( db.getAssignmentDAO().getAssignmentById(test.getAssignmentID()));
+        assertNull( db.getAssignmentDAO().getAssignmentById(test.getAssignmentID()));
     }
 
     /*Checks that GradeCategory can be created using Room
