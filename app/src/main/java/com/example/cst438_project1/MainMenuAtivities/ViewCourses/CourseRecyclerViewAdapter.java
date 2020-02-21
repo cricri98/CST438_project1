@@ -1,4 +1,4 @@
-package com.example.cst438_project1;
+package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,14 +12,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cst438_project1.R;
+
 import java.util.ArrayList;
 
 public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "CourseRecyclerViewAdapt";
 
-    private ArrayList<String> mCourseNames = new ArrayList<>();
-    private ArrayList<String> mCourseDesc = new ArrayList<>();
-    private ArrayList<String> mCourseGrades = new ArrayList<>();
+    private ArrayList<String> mCourseNames;
+    private ArrayList<String> mCourseDesc;
+    private ArrayList<String> mCourseGrades;
     private Context mContext;
 
     public CourseRecyclerViewAdapter(ArrayList<String> courseNames, ArrayList<String> courseDesc, ArrayList<String> courseGrades, Context context) {

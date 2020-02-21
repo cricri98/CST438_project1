@@ -4,7 +4,7 @@ import androidx.room.TypeConverter;
 
 import java.util.Date;
 
-public class IntListTypeConverter {
+public class IntArrayTypeConverter {
     @TypeConverter
     public String convertArrToString(int[] intArr){
         String arrString = "";

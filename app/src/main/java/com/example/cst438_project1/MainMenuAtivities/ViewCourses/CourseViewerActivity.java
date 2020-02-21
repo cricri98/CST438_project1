@@ -1,4 +1,4 @@
-package com.example.cst438_project1.MainMenuAtivities;
+package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
 import android.os.Bundle;
 
@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.example.cst438_project1.CourseRecyclerViewAdapter;
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.Objects.Course;
+import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CourseViewerActivity extends AppCompatActivity {
 
@@ -40,6 +41,14 @@ public class CourseViewerActivity extends AppCompatActivity {
         }
 
         initRecyclerView();
+    }
+
+    public void addCourseToUser(String courseName){
+        User u = db.getUserDao().getUserById(getIntent().getIntExtra("userId", -1));
+        Course c = db.getCourseDAO().getCourseByName(courseName);
+        List<Integer> tempList= u.getCourseList();
+        tempList.add(c.getCourseId());
+        u.setCourseList(tempList);
     }
 
     private void initRecyclerView(){

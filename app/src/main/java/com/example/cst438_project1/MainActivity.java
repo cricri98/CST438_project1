@@ -12,9 +12,7 @@ import androidx.room.Room;
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.Objects.Course;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(new Intent(this, mainMenu.class));
 
         //putting in dummy courses until we can add them through the app
-        db.getCourseDAO().nuke();
-        addCourses(10);
+//        db.getCourseDAO().nuke();
+//        addCourses(10);
     }
 
     private void addCourses(int size){
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
             db.getCourseDAO().insert(c);
         }
-
     }
 
     void openCreateAcc(){

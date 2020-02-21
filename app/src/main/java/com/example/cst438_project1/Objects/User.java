@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
 
+import java.util.List;
+
 /*Contains personal data for user.
  *@author Joshua Click
  *Changelog:
@@ -27,6 +29,8 @@ public class User {
     //TODO:Password hashing!
     @ColumnInfo(name = "password")
     private String password;
+
+    private List<Integer> courseList;
 
     public User(String username, String name, String password) {
         this.username = username;
@@ -91,6 +95,14 @@ public class User {
             return true;
         }
         return false;
+    }
+
+    public List<Integer> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Integer> courseList) {
+        this.courseList = courseList;
     }
 
     @Override

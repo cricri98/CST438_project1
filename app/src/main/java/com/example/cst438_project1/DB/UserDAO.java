@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.example.cst438_project1.Objects.User;
 
+import java.util.List;
+
 @Dao
 public interface UserDAO {
 
@@ -28,4 +30,7 @@ public interface UserDAO {
 
     @Delete
     void deleteUser(User... users);
+
+    @Query("DELETE FROM " + StudentAppDatabase.COURSE_TABLE)
+    void nuke();
 }

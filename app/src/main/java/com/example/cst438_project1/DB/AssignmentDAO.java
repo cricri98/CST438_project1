@@ -24,6 +24,9 @@ public interface AssignmentDAO {
     @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE )
     List<Assignment> getAssignments();
 
+    @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mDetails = :desc")
+    List<Assignment> getAssignmentByDesc(String desc);
+
     @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mAssignmentID = :assignmentId")
     Assignment getAssignmentById(Integer assignmentId);
 

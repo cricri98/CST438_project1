@@ -76,4 +76,22 @@ public class CourseDAOTest {
         db.getCourseDAO().update(temp);
         assertEquals(name, db.getCourseDAO().getCourseByName(name).getCourseName());
     }
+
+    @Test
+    public void CourseMassInsert(){
+        Context c = InstrumentationRegistry.getInstrumentation().getContext();
+        StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
+
+        Random r = new Random();
+        int rNumber = Math.abs(r.nextInt(100) + 1);
+        for(int i = 0; i < rNumber; i++) {
+            Course test = new Course("Test" + i, r.nextInt(), new Date(2020, 1, 21), new Date(2020, 5, 15), "blah blah" + i, 30);
+            db.getCourseDAO().insert(test);
+        }
+
+        assertEquals(db.getCourseDAO().getCourses().size(), rNumber);
+
+        db.getCourseDAO().nuke();
+        assertEquals(db.getCourseDAO().getCourses().size(), 0);
+    }
 }

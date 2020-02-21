@@ -17,7 +17,7 @@
         <activity android:name=".MainMenuAtivities.ViewGradesActivity" />
         <activity android:name=".MainMenuAtivities.AccountActivity" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.ViewAssignmentActivity" />
-        <activity android:name=".MainMenuAtivities.CourseViewerActivity" />
+        <activity android:name=".MainMenuAtivities.ViewCourses.CourseViewerActivity" />
         <activity android:name=".mainMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>

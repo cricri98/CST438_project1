@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class AssignmentDAOTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -40,11 +40,16 @@ public class ExampleInstrumentedTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
+
+        String assignDesc = "ie1";
+
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
-                "ie3", r.nextInt(), r.nextInt(), r.nextInt());
+                "ie3", r.nextInt(), r.nextInt());
 
         db.getAssignmentDAO().insert(test);
-        assertNotNull( db.getAssignmentDAO().getAssignmentById(test.getAssignmentID()));
+        test = db.getAssignmentDAO().getAssignmentByDesc(assignDesc).get(0);
+
+        assertNotNull( db.getAssignmentDAO().getAssignmentById(Math.toIntExact(test.getAssignmentID())));
     }
 
     /*Checks that Assignment can be deleted from Room
@@ -55,10 +60,15 @@ public class ExampleInstrumentedTest {
         StudentAppDatabase db = Room.inMemoryDatabaseBuilder(c, StudentAppDatabase.class).build();
 
         Random r = new Random();
+
+        String assignDesc = "ie1";
+
         Assignment test = new Assignment("ie1", r.nextFloat(), r.nextFloat(), "ie2",
-                "ie3", r.nextInt(), r.nextInt(), r.nextInt());
+                "ie3", r.nextInt(), r.nextInt());
 
         db.getAssignmentDAO().insert(test);
+        test = db.getAssignmentDAO().getAssignmentByDesc(assignDesc).get(0);
+
         assertNotNull( db.getAssignmentDAO().getAssignmentById(test.getAssignmentID()));
 
         db.getAssignmentDAO().delete(test);
