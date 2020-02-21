@@ -49,6 +49,9 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     StudentAppDatabase db;
 
     Integer savedAssignmentID;
+    String savedCourseName;
+
+    Integer courseID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,10 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         //receive the user key
         Intent intent = getIntent();
         userID = intent.getIntExtra("userId", 0);
+
+        //receive the course name
+        Intent rV = getIntent();
+        savedCourseName = rV.getStringExtra("course-name");
 
         mainDisplay = findViewById(R.id.assignmentDisplay);
         mainDisplay.setMovementMethod(new ScrollingMovementMethod());
@@ -144,14 +151,24 @@ public class ViewAssignmentActivity extends AppCompatActivity {
 //        }
 
         //for now list all of the assignments in the DB
+
+        //retrieve the course ID
+        for(Course c: courses){
+            if(c.getCourseName().equals(savedCourseName)){
+                courseID = c.getCourseId();
+            }
+        }
+
+        //display all assignments with the courseID
         if(!assignments.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
             for(Assignment a: assignments){
+                    if(a.getCourseID() == courseID)
                     stringBuilder.append(a.toString());
                 }
             mainDisplay.setText(stringBuilder.toString());
         } else {
-            mainDisplay.setText("NO ASSIGNMENTS DUE");
+            mainDisplay.setText("NO ASSIGNMENTS DUE FOR COURSE: " + savedCourseName);
         }
 
     }
@@ -205,14 +222,6 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         if(!assignments.isEmpty()){
             for(Assignment a: assignments){
                 if(a.getAssignmentID() == savedAssignmentID){
-//                    Intent dA = new Intent(this, deleteAssignment.class);
-//                    //pass user key
-//                    // dA.putExtra();
-//
-//                    //pass assignment key
-//                    dA.putExtra("assignmentKey", savedAssignmentID);
-//                    startActivity(dA);
-                    //delete assignment
                     db.getAssignmentDAO().delete(a);
                     Toast.makeText(getApplicationContext(), "Assignment #" + savedAssignmentID + " deleted", Toast.LENGTH_LONG).show();
                     refreshDisplay();
