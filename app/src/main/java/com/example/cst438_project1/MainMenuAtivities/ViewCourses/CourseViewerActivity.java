@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.editAssignment;
 import com.example.cst438_project1.Objects.Course;
 import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;

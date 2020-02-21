@@ -1,6 +1,7 @@
 package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
+import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
+import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.editAssignment;
 import com.example.cst438_project1.R;
 
 import java.util.ArrayList;
@@ -51,6 +56,12 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, mCourseNames.get(position), Toast.LENGTH_LONG).show();
+
+                //open the viewAssignmentActivity
+                Intent intent = new Intent (view.getContext(), ViewAssignmentActivity.class);
+                //pass on the course name
+                intent.putExtra("course-name", mCourseNames.get(position));
+                view.getContext().startActivity(intent);
             }
         });
     }
