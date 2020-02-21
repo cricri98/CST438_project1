@@ -31,6 +31,6 @@ public interface UserDAO {
     @Delete
     void deleteUser(User... users);
 
-    @Query("DELETE FROM " + StudentAppDatabase.COURSE_TABLE)
+    @Query("DELETE FROM " + StudentAppDatabase.USER_TABLE)
     void nuke();
 }

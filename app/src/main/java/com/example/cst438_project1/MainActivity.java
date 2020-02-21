@@ -3,6 +3,7 @@ package com.example.cst438_project1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String TAG = "main activity:";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button button1 = findViewById(R.id.button1);
@@ -50,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
         //putting in dummy courses until we can add them through the app
         db.getCourseDAO().nuke();
         addCourses(10);
+        Log.d(TAG, "onCreate: courseDAOSize = " + db.getCourseDAO().getCourses().size());
+
+
         db.getUserDao().nuke();
         addStudents(10);
+        Log.d(TAG, "onCreate: studentDAOSize = " + db.getUserDao().getAll().length);
     }
 
     private void addCourses(int size) {
