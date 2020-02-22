@@ -150,6 +150,9 @@ public class CourseViewerActivity extends AppCompatActivity {
     }
 
     private void initLists(){
+        mCourseGrades = new ArrayList<>();
+        mCourseNames = new ArrayList<>();
+        mCourseDesc = new ArrayList<>();
         for(Course c : db.getCourseDAO().getCourses()){
             int avg = 0, maxAvg = 0;
             if(u.getCourseList().contains(c.getCourseId())) {
@@ -162,8 +165,8 @@ public class CourseViewerActivity extends AppCompatActivity {
                 if(maxAvg == 0) {
                     mCourseGrades.add("N/A");
                 }else{
-                    double average = avg / maxAvg;
-                    mCourseGrades.add(String.valueOf(average));
+                    double average = Double.valueOf(avg) / Double.valueOf(maxAvg);
+                    mCourseGrades.add((average) + " / 1");
                 }
             }
         }
