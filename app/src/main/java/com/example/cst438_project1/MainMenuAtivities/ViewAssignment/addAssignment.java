@@ -90,9 +90,7 @@ public class addAssignment extends AppCompatActivity {
         db.getAssignmentDAO().insert(a);
         Toast.makeText(getApplicationContext(), "Assignment Created", Toast.LENGTH_LONG).show();
 
-
-
-        finish();
+        onBackPressed();
     }
 
     void setCourseNames(){
@@ -126,7 +124,9 @@ public class addAssignment extends AppCompatActivity {
 
         Intent i = new Intent(this, ViewAssignmentActivity.class);
         i.putExtra("userId", userId);
-        i.putExtra("courseName", db.getCourseDAO().getCourseById(courseId).getCourseName());
+        if(courseId != -1) {
+            i.putExtra("courseName", db.getCourseDAO().getCourseById(courseId).getCourseName());
+        }
         startActivity(i);
         finish();
     }

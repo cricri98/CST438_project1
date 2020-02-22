@@ -25,6 +25,7 @@ import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,8 +166,9 @@ public class CourseViewerActivity extends AppCompatActivity {
                 if(maxAvg == 0) {
                     mCourseGrades.add("N/A");
                 }else{
-                    double average = Double.valueOf(avg) / Double.valueOf(maxAvg);
-                    mCourseGrades.add((average) + " / 1");
+                    DecimalFormat df2 = new DecimalFormat("#.##");
+                    double average = (Double.valueOf(avg) / Double.valueOf(maxAvg) * 100);
+                    mCourseGrades.add(df2.format(average));
                 }
             }
         }

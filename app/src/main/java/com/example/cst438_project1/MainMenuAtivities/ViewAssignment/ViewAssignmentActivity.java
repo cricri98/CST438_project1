@@ -17,6 +17,7 @@ import com.example.cst438_project1.DB.CourseDAO;
 import com.example.cst438_project1.DB.EnrollmentDAO;
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.addAssignment;
+import com.example.cst438_project1.MainMenuAtivities.ViewCourses.CourseViewerActivity;
 import com.example.cst438_project1.Objects.Assignment;
 import com.example.cst438_project1.Objects.Course;
 import com.example.cst438_project1.Objects.Enrollment;
@@ -105,6 +106,11 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if(c != null){
+            Intent i = new Intent(this, CourseViewerActivity.class);
+            i.putExtra("userId", userID);
+            startActivity(i);
+        }
         finish();
     }
 

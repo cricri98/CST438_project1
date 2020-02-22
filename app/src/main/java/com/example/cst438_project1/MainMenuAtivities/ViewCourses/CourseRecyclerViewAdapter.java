@@ -1,5 +1,6 @@
 package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -57,6 +58,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
             @Override
             public void onClick(View view) {
                 viewCourse(view, position);
+                ((Activity)mContext).finish();
             }
         });
     }
