@@ -22,47 +22,66 @@
         android:id="@+id/tvUn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="30dp"
         android:text="@string/username"
         app:layout_constraintStart_toStartOf="@+id/accountHeader"
         app:layout_constraintTop_toBottomOf="@+id/accountHeader" />
+
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        app:layout_constraintStart_toStartOf="@+id/tvUn"
+        app:layout_constraintTop_toTopOf="@+id/passwordView" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/name"
         app:layout_constraintStart_toStartOf="@+id/tvUn"
-        app:layout_constraintTop_toBottomOf="@+id/tvUn" />
+        app:layout_constraintTop_toTopOf="@+id/nameView" />
 
     <TextView
         android:id="@+id/tvId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/userId"
-        app:layout_constraintStart_toStartOf="@+id/tvName"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        app:layout_constraintStart_toStartOf="@+id/tvUn"
+        app:layout_constraintTop_toTopOf="@+id/userIdView" />
 
-    <TextView
+    <EditText
         android:id="@+id/usernameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="TextView"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/tvUn"
         app:layout_constraintTop_toTopOf="@+id/tvUn" />
 
-    <TextView
+    <EditText
+        android:id="@+id/passwordView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/usernameView"
+        app:layout_constraintTop_toBottomOf="@+id/usernameView" />
+
+    <EditText
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/usernameView"
-        app:layout_constraintTop_toBottomOf="@+id/usernameView" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordView" />
 
     <TextView
         android:id="@+id/userIdView"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +24,9 @@ public class AccountActivity extends AppCompatActivity {
     StudentAppDatabase db;
 
     TextView userIdView;
-    TextView usernameView;
-    TextView nameView;
-    TextView passwordView;
+    EditText usernameView;
+    EditText nameView;
+    EditText passwordView;
 
     Button editAccount;
 
@@ -43,6 +44,11 @@ public class AccountActivity extends AppCompatActivity {
         usernameView = findViewById(R.id.usernameView);
         nameView = findViewById(R.id.nameView);
         userIdView = findViewById(R.id.userIdView);
+        passwordView = findViewById(R.id.passwordView);
+
+        usernameView.setFocusable(false);
+        nameView.setFocusable(false);
+        passwordView.setFocusable(false);
 
         editAccount = findViewById(R.id.editAccount);
         editAccount.setOnClickListener(new View.OnClickListener(){
@@ -52,14 +58,15 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
         updateViews();
+
         edit = false;
     }
 
     void updateViews(){
-        Toast.makeText(getApplicationContext(), "update!", Toast.LENGTH_LONG).show();
         try {
             usernameView.setText(u.getUsername());
             nameView.setText(u.getName());
+            passwordView.setText(u.getPassword());
             userIdView.setText(Integer.toString(u.getID()));
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,14 +81,36 @@ public class AccountActivity extends AppCompatActivity {
         finish();
     }
 
+    public void save(){
+        try {
+            u.setUsername(usernameView.getText().toString());
+            u.setPassword(passwordView.getText().toString());
+            u.setName(nameView.getText().toString());
+            db.getUserDao().updateUser(u);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
+            finish();
+        }
+    }
+
     public void editAccount(){
         if (edit){
+            save();
+            updateViews();
             usernameView.setFocusable(false);
             nameView.setFocusable(false);
             passwordView.setFocusable(false);
-
+            editAccount.setText("Edit");
+            edit = false;
+            Toast.makeText(getApplicationContext(), "Account updated", Toast.LENGTH_LONG).show();
         }else {
-
+            updateViews();
+            usernameView.setFocusable(true);
+            nameView.setFocusable(true);
+            passwordView.setFocusable(true);
+            editAccount.setText("Save");
+            edit = true;
         }
     }
 }
