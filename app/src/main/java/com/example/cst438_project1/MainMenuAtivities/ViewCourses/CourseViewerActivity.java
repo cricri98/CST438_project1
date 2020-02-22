@@ -19,6 +19,7 @@ import androidx.room.Room;
 import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
 import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.editAssignment;
+import com.example.cst438_project1.Objects.Assignment;
 import com.example.cst438_project1.Objects.Course;
 import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
@@ -133,8 +134,11 @@ public class CourseViewerActivity extends AppCompatActivity {
 
             db.getUserDao().updateUser(u);
             db.getCourseDAO().update(c);
+
+            initLists();
         }else{
             Toast.makeText(this, "Class is full", Toast.LENGTH_LONG).show();
+            return;
         }
     }
 
@@ -147,9 +151,21 @@ public class CourseViewerActivity extends AppCompatActivity {
 
     private void initLists(){
         for(Course c : db.getCourseDAO().getCourses()){
-            mCourseNames.add(c.getCourseName());
-            mCourseDesc.add(c.getDescription());
-            mCourseGrades.add("N/A");
+            int avg = 0, maxAvg = 0;
+            if(u.getCourseList().contains(c.getCourseId())) {
+                mCourseNames.add(c.getCourseName());
+                mCourseDesc.add(c.getDescription());
+                for(Assignment a : db.getAssignmentDAO().getAssignmentByCourseAndUser(c.getCourseId(), u.getID())){
+                    avg += a.getEarnedScore();
+                    maxAvg += a.getMaxScore();
+                }
+                if(maxAvg == 0) {
+                    mCourseGrades.add("N/A");
+                }else{
+                    double average = avg / maxAvg;
+                    mCourseGrades.add(String.valueOf(average));
+                }
+            }
         }
         initRecyclerView();
     }

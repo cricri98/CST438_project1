@@ -38,9 +38,6 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     AssignmentDAO mAssignmentDAO;
     List<Assignment> assignments;
 
-    EnrollmentDAO mEnrollmentDAO;
-    List<Enrollment> enrollments;
-
     CourseDAO mCourseDAO;
     List<Course> courses;
 
@@ -51,9 +48,8 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     StudentAppDatabase db;
 
     Integer savedAssignmentID;
-    String savedCourseName;
 
-    Integer courseID;
+    Course c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +61,10 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         assignmentIDET = findViewById(R.id.assignmentID);
 
         //receive the user key
-        Intent intent = getIntent();
-        userID = intent.getIntExtra("userId", 0);
+        userID = getIntent().getIntExtra("userId", -1);
 
-        //receive the course name
-        Intent rV = getIntent();
-        savedCourseName = rV.getStringExtra("course-name");
+        //receive the course
+        c = db.getCourseDAO().getCourseByName(getIntent().getStringExtra("courseName"));
 
         mainDisplay = findViewById(R.id.assignmentDisplay);
         mainDisplay.setMovementMethod(new ScrollingMovementMethod());
@@ -115,8 +109,11 @@ public class ViewAssignmentActivity extends AppCompatActivity {
     }
 
     private void refreshDisplay(){
-        assignments = db.getAssignmentDAO().getAssignments();
-        enrollments = db.getEnrollmentDAO().getEnrollments();
+        if(c != null){
+            assignments = db.getAssignmentDAO().getAssignmentByCourseAndUser(c.getCourseId(), userID);
+        }else{
+            assignments = db.getAssignmentDAO().getAssignmentByUser(userID);
+        }
         courses = db.getCourseDAO().getCourses();
 
         List<Integer> coursesEnrolledIn = new ArrayList<>();
@@ -154,40 +151,31 @@ public class ViewAssignmentActivity extends AppCompatActivity {
 
         //for now list all of the assignments in the DB
 
-        //retrieve the course ID
-        for(Course c: courses){
-            if(c.getCourseName().equals(savedCourseName)){
-                courseID = c.getCourseId();
-                break;
-            }
-        }
-
         //display all assignments with the courseID
         if(!assignments.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
             for(Assignment a: assignments){
-                if (a.getCourseID() == courseID || courseID == null) {
-                    stringBuilder.append(a.toString() + '\n');
-                }
+                stringBuilder.append(a.toString() + '\n');
             }
             mainDisplay.setText(stringBuilder.toString());
         } else {
-            mainDisplay.setText("NO ASSIGNMENTS DUE");
-            if(courseID != NULL) {
-                mainDisplay.setText(" FOR COURSE:" + savedCourseName);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("NO ASSIGNMENTS DUE");
+            if(c != null) {
+                stringBuilder.append(" FOR COURSE:" + c.getCourseName());
             }
+            mainDisplay.setText(stringBuilder);
         }
 
     }
 
     public void addAssignment(){
-        Intent aA = new Intent(this, addAssignment.class);
-        //pass user key
-//        aA.putExtra();
-        //pass course key
-//        aA.putExtra();
-        startActivity(aA);
-        aA.putExtra("userId", userID);
+        Intent intent = new Intent(this, addAssignment.class);
+        intent.putExtra("userId", userID);
+        if(c != null) {
+            intent.putExtra("courseId", c.getCourseId());
+        }
+        startActivity(intent);
         finish();
     }
 

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst438_project1.MainMenuAtivities.AccountActivity;
 import com.example.cst438_project1.MainMenuAtivities.ViewCourses.CourseViewerActivity;
 import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
-import com.example.cst438_project1.MainMenuAtivities.ViewGradesActivity;
 
 public class mainMenu extends AppCompatActivity {
 
@@ -18,7 +17,6 @@ public class mainMenu extends AppCompatActivity {
     Button coursesButton;
     Button assignmentsButton;
     Button accountButton;
-    Button gradesButton;
     Button logoutButton;
 
     int userId;
@@ -33,7 +31,6 @@ public class mainMenu extends AppCompatActivity {
         coursesButton = findViewById(R.id.viewCoursesButton);
         assignmentsButton = findViewById(R.id.viewAssignmentsButton);
         accountButton = findViewById(R.id.viewAccountButton);
-        gradesButton = findViewById(R.id.viewGradesButton);
         logoutButton = findViewById(R.id.logoutButton);
 
         coursesButton.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +51,6 @@ public class mainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openAccountView();
-            }
-        });
-
-        gradesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGradesView();
             }
         });
 
@@ -86,12 +76,6 @@ public class mainMenu extends AppCompatActivity {
 
     public void openAccountView(){
         Intent i = new Intent(this, AccountActivity.class);
-        i.putExtra("userId", userId);
-        startActivity(i);
-    }
-
-    public void openGradesView(){
-        Intent i = new Intent(this, ViewGradesActivity.class);
         i.putExtra("userId", userId);
         startActivity(i);
     }

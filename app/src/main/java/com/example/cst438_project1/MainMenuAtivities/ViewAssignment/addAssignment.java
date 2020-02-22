@@ -28,12 +28,14 @@ public class addAssignment extends AppCompatActivity {
     EditText mDetails;
     EditText mAssignedDate;
     EditText mDueDate;
-    EditText mCategoryID;
     Spinner mCourseID;
     EditText mMaxScore;
     EditText mEarnedScore;
 
     Button enter;
+
+    int userId;
+    int courseId;
 
     List<String> courseNames = new ArrayList<>();
 
@@ -50,6 +52,9 @@ public class addAssignment extends AppCompatActivity {
         mCourseID = findViewById(R.id.e);
         mMaxScore = findViewById(R.id.f);
         mEarnedScore = findViewById(R.id.g);
+
+        userId = getIntent().getIntExtra("userId", -1);
+        courseId = getIntent().getIntExtra("courseId", -1);
 
         enter = findViewById(R.id.h);
 
@@ -80,7 +85,7 @@ public class addAssignment extends AppCompatActivity {
         Integer courseID = db.getCourseDAO().getCourseByName(courseName).getCourseId();
 
 
-        Assignment a = new Assignment(details, maxScore, earnedScore, assignedDate, dueDate, courseID);
+        Assignment a = new Assignment(details, maxScore, earnedScore, assignedDate, dueDate, userId, courseID);
 
         db.getAssignmentDAO().insert(a);
         Toast.makeText(getApplicationContext(), "Assignment Created", Toast.LENGTH_LONG).show();
@@ -91,10 +96,20 @@ public class addAssignment extends AppCompatActivity {
     }
 
     void setCourseNames(){
-        List<Course> courseList = db.getCourseDAO().getCourses();
+        if(courseId != -1){
+            courseNames.add(db.getCourseDAO().getCourseById(courseId).getCourseName());
+        }else {
+            List<Course> courseList = db.getCourseDAO().getCourses();
 
-        for(Course c : courseList){
-            courseNames.add(c.getCourseName());
+            for (Course c : courseList) {
+                if(c.getStudentIds().contains(userId)) {
+                    courseNames.add(c.getCourseName());
+                }
+            }
+            if(courseNames.size() == 0){
+                Toast.makeText(getApplicationContext(), "You aren't enrolled in any classes", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            }
         }
     }
 
@@ -110,7 +125,8 @@ public class addAssignment extends AppCompatActivity {
         super.onBackPressed();
 
         Intent i = new Intent(this, ViewAssignmentActivity.class);
-        i.putExtra("userId", getIntent().getIntExtra("userId", -1));
+        i.putExtra("userId", userId);
+        i.putExtra("courseName", db.getCourseDAO().getCourseById(courseId).getCourseName());
         startActivity(i);
         finish();
     }

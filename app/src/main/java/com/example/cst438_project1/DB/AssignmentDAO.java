@@ -33,6 +33,15 @@ public interface AssignmentDAO {
     @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mCourseID = :courseId")
     List<Assignment> getAssignmentByCourse(Integer courseId);
 
+    @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mCourseID = :courseId AND mUserId = :userId")
+    List<Assignment> getAssignmentByCourseAndUser(Integer courseId, Integer userId);
+
+    @Query("SELECT * FROM " + StudentAppDatabase.ASSIGNMENT_TABLE + " WHERE mUserId = :userId")
+    List<Assignment> getAssignmentByUser(Integer userId);
+
+    @Query("DELETE FROM " + StudentAppDatabase.ASSIGNMENT_TABLE)
+    void nuke();
+
     @Query("UPDATE Assignment SET mMaxScore =:maxScore ,mEarnedScore=:earnedScore WHERE mAssignmentID =:assignmentId")
     void updateUser(Integer assignmentId,float maxScore, float earnedScore);
 }

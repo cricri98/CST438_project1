@@ -65,7 +65,8 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         //open the viewAssignmentActivity
         Intent intent = new Intent (view.getContext(), ViewAssignmentActivity.class);
         //pass on the course name
-        intent.putExtra("course-name", mCourseNames.get(position));
+        intent.putExtra("courseName", mCourseNames.get(position));
+        intent.putExtra("userId", mUserId);
         view.getContext().startActivity(intent);
     }
 

@@ -74,5 +74,6 @@ public class AccountActivity extends AppCompatActivity {
         Intent i = new Intent(this, EditAccountActivity.class);
         i.putExtra("userId", userId);
         startActivity(i);
+        finish();
     }
 }

@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         db.getUserDao().nuke();
         addStudents(10);
         Log.d(TAG, "onCreate: studentDAOSize = " + db.getUserDao().getAll().length);
+
+        db.getAssignmentDAO().nuke();
     }
 
     private void addCourses(int size) {
