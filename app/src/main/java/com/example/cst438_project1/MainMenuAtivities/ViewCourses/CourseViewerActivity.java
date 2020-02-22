@@ -35,6 +35,7 @@ public class CourseViewerActivity extends AppCompatActivity {
 
     FloatingActionButton addCourseButton;
     FloatingActionButton pickupCourseButton;
+    FloatingActionButton editCourseButton;
 
     User u;
 
@@ -52,6 +53,7 @@ public class CourseViewerActivity extends AppCompatActivity {
 
         addCourseButton = findViewById(R.id.courseAddButton);
         pickupCourseButton = findViewById(R.id.pickupClassButton);
+        editCourseButton = findViewById(R.id.editCourseInfoButton);
 
         u = db.getUserDao().getUserById(getIntent().getIntExtra("userId", -1));
 
@@ -64,11 +66,20 @@ public class CourseViewerActivity extends AppCompatActivity {
             }
         });
 
+
+
         pickupCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openPickupClass();
                 initLists();
+            }
+        });
+
+        editCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openEditClass();
             }
         });
 
@@ -125,6 +136,58 @@ public class CourseViewerActivity extends AppCompatActivity {
         AlertDialog dialog = mBuilder.create();
         dialog.show();
 
+    }
+
+    void openEditClass(){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.pickupspinner, null);
+        mBuilder.setTitle("Edit a class");
+        final Spinner mSpinner = mView.findViewById(R.id.pickupCourseSpinner);
+
+        List<String> courseNames = new ArrayList<>();
+        List<Course> courseList = db.getCourseDAO().getCourses();
+
+        for(Course c : courseList){
+            if(u.getCourseList().contains(c.getCourseId())) {
+                courseNames.add(c.getCourseName());
+            }
+        }
+
+        if(courseNames.size() == 0){
+            Toast.makeText(this, "Must enroll in courses", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+
+        mBuilder.setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                editClass(mSpinner.getSelectedItem().toString());
+                dialogInterface.dismiss();
+            }
+        });
+
+        mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+    void editClass(String s){
+        Intent i = new Intent(this, CourseEditActivity.class);
+        i.putExtra("courseId", db.getCourseDAO().getCourseByName(s).getCourseId());
+        i.putExtra("userId", u.getID());
+        startActivity(i);
+        finish();
     }
 
     void pickupClass(String s){

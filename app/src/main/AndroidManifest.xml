@@ -17,6 +17,7 @@
         <activity android:name=".Login" />
         <activity android:name=".MainMenuAtivities.AccountActivity" />
         <activity android:name=".MainMenuAtivities.EditAccountActivity" />
+        <activity android:name=".MainMenuAtivities.ViewCourses.CourseEditActivity" />
         <activity android:name=".MainMenuAtivities.ViewAssignment.ViewAssignmentActivity" />
         <activity android:name=".MainMenuAtivities.ViewCourses.CourseViewerActivity" />
         <activity android:name=".mainMenu" />
