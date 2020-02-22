@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cst438_project1.DB.StudentAppDatabase;
+import com.example.cst438_project1.Objects.Assignment;
 import com.example.cst438_project1.Objects.Course;
+import com.example.cst438_project1.Objects.User;
 import com.example.cst438_project1.R;
 
 import java.text.SimpleDateFormat;
@@ -31,6 +33,7 @@ public class CourseEditActivity extends AppCompatActivity {
     EditText addCourseSize;
 
     Button addCourseButton;
+    Button removeCourseButton;
 
     Course c;
 
@@ -53,6 +56,8 @@ public class CourseEditActivity extends AppCompatActivity {
         addCourseDesc = findViewById(R.id.addCourseDesc);
         addCourseSize = findViewById(R.id.addCourseMaxSize);
 
+        removeCourseButton = findViewById(R.id.deleteCourseButton);
+
         addCourseSize.setVisibility(View.GONE);
 
         addCourseButton = findViewById(R.id.addCourseButton);
@@ -69,6 +74,13 @@ public class CourseEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startCourseEdit();
+            }
+        });
+
+        removeCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeCourse();
             }
         });
     }
@@ -108,6 +120,21 @@ public class CourseEditActivity extends AppCompatActivity {
 
         return new Date(iArr[2], iArr[0], iArr[1]);
     };
+
+    void removeCourse(){
+        db.getCourseDAO().delete(c);
+        for(Assignment a : db.getAssignmentDAO().getAssignmentByCourse(c.getCourseId())){
+            db.getAssignmentDAO().delete(a);
+        }
+
+        for(int i : c.getStudentIds()){
+            User u = db.getUserDao().getUserById(i);
+            u.getCourseList().remove(c.getCourseId());
+            db.getUserDao().updateUser(u);
+        }
+
+        onBackPressed();
+    }
 
     @Override
     public void onBackPressed() {

@@ -27,6 +27,7 @@ public class CourseAdderActivity extends AppCompatActivity {
     EditText addCourseSize;
 
     Button addCourseButton;
+    Button removeCourseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class CourseAdderActivity extends AppCompatActivity {
         addCourseSize = findViewById(R.id.addCourseMaxSize);
 
         addCourseButton = findViewById(R.id.addCourseButton);
+        removeCourseButton = findViewById(R.id.deleteCourseButton);
+        removeCourseButton.setVisibility(View.GONE);
 
         addCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
