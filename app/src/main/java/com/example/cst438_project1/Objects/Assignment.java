@@ -18,7 +18,6 @@ import com.example.cst438_project1.DB.StudentAppDatabase;
 @Entity(tableName = StudentAppDatabase.ASSIGNMENT_TABLE)
 public class Assignment {
 
-    //unique ID?
     @PrimaryKey
     private Integer mAssignmentID;
 

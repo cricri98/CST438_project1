@@ -124,39 +124,6 @@ public class ViewAssignmentActivity extends AppCompatActivity {
 
         List<Integer> coursesEnrolledIn = new ArrayList<>();
 
-//        StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append(userID);
-//        mainDisplay.setText(stringBuilder.toString());
-
-        //retrieve all the classes the current user is enrolled in
-//        if(!enrollments.isEmpty()){
-//            for(Enrollment e: enrollments){
-//                if(e.getStudentId() == userID){
-//                    coursesEnrolledIn.add(e.getCourseId());
-//                }
-//            }
-//        }
-//
-//
-//        //iterate through all the assignments and pull any of the ones that
-//        // have courseID that match any of the courses the user is enrolled in
-//        if(!assignments.isEmpty()){
-//            StringBuilder stringBuilder = new StringBuilder();
-//
-//            for(Assignment a: assignments){
-//                for(Integer cE: coursesEnrolledIn){
-//                    if(a.getCourseID() == cE){
-//                        stringBuilder.append(assignments.toString());
-//                    }
-//                }
-//            }
-//            mainDisplay.setText(stringBuilder.toString());
-//        } else {
-//            mainDisplay.setText("NO ASSIGNMENTS DUE");
-//        }
-
-        //for now list all of the assignments in the DB
-
         //display all assignments with the courseID
         if(!assignments.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
@@ -198,9 +165,6 @@ public class ViewAssignmentActivity extends AppCompatActivity {
             for(Assignment a: assignments){
                 if(a.getAssignmentID() == savedAssignmentID){
                     Intent dA = new Intent(this, editAssignment.class);
-                    //pass user key
-                    // dA.putExtra();
-
                     //pass assignment key
                     dA.putExtra("assignmentKey", savedAssignmentID);
                     startActivity(dA);
@@ -220,18 +184,16 @@ public class ViewAssignmentActivity extends AppCompatActivity {
             savedAssignmentID = Integer.parseInt(assignmentIDET.getText().toString());
         }
 
-        //search for assignment
-        if(!assignments.isEmpty()){
-            for(Assignment a: assignments){
-                if(a.getAssignmentID() == savedAssignmentID){
-                    db.getAssignmentDAO().delete(a);
-                    Toast.makeText(getApplicationContext(), "Assignment #" + savedAssignmentID + " deleted", Toast.LENGTH_LONG).show();
-                    refreshDisplay();
-                    return;
-                }
+        for(Assignment a : db.getAssignmentDAO().getAssignmentByUser(userID)){
+            if(a.getAssignmentID() == savedAssignmentID){
+                db.getAssignmentDAO().delete(a);
+                Toast.makeText(getApplicationContext(), "Assignment #" + savedAssignmentID + " deleted", Toast.LENGTH_LONG).show();
+                refreshDisplay();
+                return;
             }
-            Toast.makeText(getApplicationContext(), "Invalid assignment ID", Toast.LENGTH_LONG).show();
         }
+        //if assignment not found output error
+        Toast.makeText(getApplicationContext(), "Invalid assignment ID", Toast.LENGTH_LONG).show();
     }
 
 }

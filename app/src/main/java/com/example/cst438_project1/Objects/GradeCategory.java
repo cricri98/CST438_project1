@@ -22,7 +22,6 @@ public class GradeCategory {
 
     private Integer mWeight;
     private Integer mGradeID;
-//    private Date mAssignedDate;
     private Integer mCategoryID;
 
     public GradeCategory(String title, Integer weight, Integer gradeID, Integer categoryID) {
