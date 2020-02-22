@@ -1,5 +1,7 @@
 package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -12,11 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
-import com.example.cst438_project1.DB.StudentAppDatabase;
 import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.ViewAssignmentActivity;
-import com.example.cst438_project1.MainMenuAtivities.ViewAssignment.editAssignment;
 import com.example.cst438_project1.R;
 
 import java.util.ArrayList;
@@ -27,12 +26,14 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     private ArrayList<String> mCourseNames;
     private ArrayList<String> mCourseDesc;
     private ArrayList<String> mCourseGrades;
+    private int mUserId;
     private Context mContext;
 
-    public CourseRecyclerViewAdapter(ArrayList<String> courseNames, ArrayList<String> courseDesc, ArrayList<String> courseGrades, Context context) {
+    public CourseRecyclerViewAdapter(ArrayList<String> courseNames, ArrayList<String> courseDesc, ArrayList<String> courseGrades, int userId, Context context) {
         mCourseNames = courseNames;
         mCourseDesc = courseDesc;
         mCourseGrades = courseGrades;
+        mUserId = userId;
         mContext = context;
     }
 
@@ -55,15 +56,17 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, mCourseNames.get(position), Toast.LENGTH_LONG).show();
-
-                //open the viewAssignmentActivity
-                Intent intent = new Intent (view.getContext(), ViewAssignmentActivity.class);
-                //pass on the course name
-                intent.putExtra("course-name", mCourseNames.get(position));
-                view.getContext().startActivity(intent);
+                viewCourse(view, position);
             }
         });
+    }
+
+    void viewCourse(View view, int position){
+        //open the viewAssignmentActivity
+        Intent intent = new Intent (view.getContext(), ViewAssignmentActivity.class);
+        //pass on the course name
+        intent.putExtra("course-name", mCourseNames.get(position));
+        view.getContext().startActivity(intent);
     }
 
     @Override

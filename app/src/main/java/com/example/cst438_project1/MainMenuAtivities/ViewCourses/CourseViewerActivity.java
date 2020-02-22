@@ -1,11 +1,16 @@
 package com.example.cst438_project1.MainMenuAtivities.ViewCourses;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +32,7 @@ public class CourseViewerActivity extends AppCompatActivity {
     StudentAppDatabase db;
 
     FloatingActionButton addCourseButton;
+    FloatingActionButton pickupCourseButton;
 
     User u;
 
@@ -43,6 +49,7 @@ public class CourseViewerActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), StudentAppDatabase.class, "db").allowMainThreadQueries().build();
 
         addCourseButton = findViewById(R.id.courseAddButton);
+        pickupCourseButton = findViewById(R.id.pickupClassButton);
 
         u = db.getUserDao().getUserById(getIntent().getIntExtra("userId", -1));
 
@@ -55,17 +62,80 @@ public class CourseViewerActivity extends AppCompatActivity {
             }
         });
 
+        pickupCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPickupClass();
+                initLists();
+            }
+        });
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0 && addCourseButton.getVisibility() == View.VISIBLE) {
+                    pickupCourseButton.hide();
                     addCourseButton.hide();
                 } else if (dy < 0 && addCourseButton.getVisibility() != View.VISIBLE) {
+                    pickupCourseButton.show();
                     addCourseButton.show();
                 }
             }
         });
+    }
+
+    void openPickupClass(){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.pickupspinner, null);
+        mBuilder.setTitle("Pickup a class");
+        final Spinner mSpinner = mView.findViewById(R.id.pickupCourseSpinner);
+
+        List<String> courseNames = new ArrayList<>();
+        List<Course> courseList = db.getCourseDAO().getCourses();
+
+        for(Course c : courseList){
+            if(!u.getCourseList().contains(c.getCourseId())) {
+                courseNames.add(c.getCourseName());
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courseNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+
+        mBuilder.setPositiveButton("Pickup", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                pickupClass(mSpinner.getSelectedItem().toString());
+                dialogInterface.dismiss();
+            }
+        });
+
+        mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+
+    }
+
+    void pickupClass(String s){
+        Course c = db.getCourseDAO().getCourseByName(s);
+        if(c.getMaxSize() != c.getStudentIds().size()) {
+            u.getCourseList().add(c.getCourseId());
+            c.getStudentIds().add(u.getID());
+
+            db.getUserDao().updateUser(u);
+            db.getCourseDAO().update(c);
+        }else{
+            Toast.makeText(this, "Class is full", Toast.LENGTH_LONG).show();
+        }
     }
 
     void addCourseOpen(){
@@ -86,7 +156,7 @@ public class CourseViewerActivity extends AppCompatActivity {
 
     private void initRecyclerView(){
         recyclerView = findViewById(R.id.CourseViewRecycler);
-        CourseRecyclerViewAdapter adapter = new CourseRecyclerViewAdapter(mCourseNames, mCourseDesc, mCourseGrades, this);
+        CourseRecyclerViewAdapter adapter = new CourseRecyclerViewAdapter(mCourseNames, mCourseDesc, mCourseGrades, getIntent().getIntExtra("userId", -1),this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

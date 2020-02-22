@@ -25,6 +25,8 @@ import com.example.cst438_project1.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Types.NULL;
+
 public class ViewAssignmentActivity extends AppCompatActivity {
 
     int userID;
@@ -156,6 +158,7 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         for(Course c: courses){
             if(c.getCourseName().equals(savedCourseName)){
                 courseID = c.getCourseId();
+                break;
             }
         }
 
@@ -163,12 +166,16 @@ public class ViewAssignmentActivity extends AppCompatActivity {
         if(!assignments.isEmpty()){
             StringBuilder stringBuilder = new StringBuilder();
             for(Assignment a: assignments){
-                    if(a.getCourseID() == courseID)
-                    stringBuilder.append(a.toString());
+                if (a.getCourseID() == courseID || courseID == null) {
+                    stringBuilder.append(a.toString() + '\n');
                 }
+            }
             mainDisplay.setText(stringBuilder.toString());
         } else {
-            mainDisplay.setText("NO ASSIGNMENTS DUE FOR COURSE: " + savedCourseName);
+            mainDisplay.setText("NO ASSIGNMENTS DUE");
+            if(courseID != NULL) {
+                mainDisplay.setText(" FOR COURSE:" + savedCourseName);
+            }
         }
 
     }

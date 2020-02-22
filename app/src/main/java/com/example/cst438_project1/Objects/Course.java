@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Course{
@@ -19,7 +20,7 @@ public class Course{
 
     private String mDescription;
 
-    private int[] mStudentIds;
+    private List<Integer> mStudentIds;
     private int mMaxSize;
 
     public Course(String courseName, Date startDate, Date endDate, String description, int maxSize) {
@@ -28,7 +29,6 @@ public class Course{
         mEndDate = endDate;
         mDescription = description;
         mMaxSize = maxSize;
-        mStudentIds = new int[maxSize];
     }
 
     public int getCourseId() {
@@ -71,11 +71,11 @@ public class Course{
         mDescription = description;
     }
 
-    public int[] getStudentIds() {
+    public List<Integer> getStudentIds() {
         return mStudentIds;
     }
 
-    public void setStudentIds(int[] studentIds) {
+    public void setStudentIds(List<Integer> studentIds) {
         mStudentIds = studentIds;
     }
 
