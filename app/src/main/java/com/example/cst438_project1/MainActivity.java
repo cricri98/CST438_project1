@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(new Intent(this, mainMenu.class));
 
         //putting in dummy courses until we can add them through the app
-        db.getCourseDAO().nuke();
-        addCourses(10);
-        Log.d(TAG, "onCreate: courseDAOSize = " + db.getCourseDAO().getCourses().size());
-
-
-        db.getUserDao().nuke();
-        addStudents(10);
-        Log.d(TAG, "onCreate: studentDAOSize = " + db.getUserDao().getAll().length);
+//        db.getCourseDAO().nuke();
+//        addCourses(10);
+//        Log.d(TAG, "onCreate: courseDAOSize = " + db.getCourseDAO().getCourses().size());
+//
+//
+//        db.getUserDao().nuke();
+//        addStudents(10);
+//        Log.d(TAG, "onCreate: studentDAOSize = " + db.getUserDao().getAll().length);
 
         db.getAssignmentDAO().nuke();
     }
